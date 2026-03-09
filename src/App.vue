@@ -1,12 +1,13 @@
-<script setup></script>
+<script setup>
+import PartOutro from './parts/PartOutro.vue'
+import PartIntro from './parts/PartIntroduction.vue'
+import PartStats from './parts/PartStats.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
-  <h2>Yeah</h2>
+  <PartIntro></PartIntro>
+  <PartStats></PartStats>
+  <PartOutro></PartOutro>
 </template>
 
 <style scoped></style>
