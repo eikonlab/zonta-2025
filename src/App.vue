@@ -1,6 +1,6 @@
 <script setup>
 import PartOutro from './parts/PartOutro.vue'
-import PartIntro from './parts/PartIntroduction.vue'
+import PartIntro from './parts/PartIntro.vue'
 import PartStats from './parts/PartStats.vue'
 </script>
 
