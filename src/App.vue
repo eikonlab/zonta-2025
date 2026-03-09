@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import Test from './components/Test.vue'
+</script>
 
 <template>
   <h1>You did it!</h1>
@@ -7,6 +9,7 @@
     documentation
   </p>
   <h2>Yeah</h2>
+  <Test></Test>
 </template>
 
 <style scoped></style>
