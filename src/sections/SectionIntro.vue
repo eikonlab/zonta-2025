@@ -6,17 +6,15 @@ import IntroText from './../parts/IntroText.vue'
 
 <template>
   <div>
-    <IntroStart></IntroStart>
-
-    <IntroWords></IntroWords>
+    <div class="container">
+      <IntroStart></IntroStart>
+    </div>
+    <div class="container">
+      <IntroWords></IntroWords>
+    </div>
 
     <IntroText></IntroText>
   </div>
 </template>
 
-<style scoped>
-div {
-  background-color: var(--color-light-orange);
-  color: var(--color-white);
-}
-</style>
+<style scoped></style>

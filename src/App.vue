@@ -20,4 +20,10 @@ import { gsap } from 'gsap'
   </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+header {
+  padding-top: 100px;
+  background-color: var(--color-light-orange);
+  color: var(--color-white);
+}
+</style>
