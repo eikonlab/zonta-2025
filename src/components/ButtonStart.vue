@@ -33,10 +33,49 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.5s ease;
+}
+
+/* Img fond */
+/* .button-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background-image: url('../../img-button-start.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: scale(2.5);
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  z-index: 0;
+}
+
+.button-wrapper:hover::before {
+  opacity: 1;
+} */
+
+.button-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background: url('../../img-button-start.svg') center / 180% no-repeat;
+
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path 0.6s ease;
+}
+
+.button-wrapper:hover::before {
+  clip-path: circle(120% at 50% 50%);
 }
 
 /* Grand cercle de base */
@@ -68,55 +107,4 @@
   height: 172px;
   z-index: 1;
 }
-
-/* .button-wrapper {
-  display: inline-block;
-  position: relative;
-  width: 172px;
-  height: 172px;
-}
-
-.button-extern,
-.button-intern {
-  border-radius: 100px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.5s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.button-extern {
-  width: 172px;
-  height: 172px;
-  border: 1.4px solid var(--color-white);
-  background-color: transparent;
-  z-index: 1;
-}
-
-.button-intern {
-  width: 106px;
-  height: 106px;
-  background-color: #ffb27b;
-  z-index: 2;
-}
-
-.button-intern p {
-  text-align: center;
-  color: var(--color-white);
-  margin: 0;
-}
-
-.button-wrapper:hover .button-extern {
-  width: 150px;
-  height: 150px;
-}
-
-.button-wrapper:hover .button-intern {
-  width: 172px;
-  height: 172px;
-} */
 </style>
