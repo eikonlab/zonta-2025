@@ -36,6 +36,7 @@ import ButtonStart from './../components/ButtonStart.vue'
   height: 100vh;
 }
 
+/* Titre et sous titres */
 .layout-title {
   display: inline-block;
 }
@@ -53,6 +54,7 @@ import ButtonStart from './../components/ButtonStart.vue'
   }
 }
 
+/* Texte bas */
 .layout-end-text {
   height: 12vh;
   display: flex;
@@ -60,7 +62,7 @@ import ButtonStart from './../components/ButtonStart.vue'
   align-items: flex-end;
 }
 
-/* Button position */
+/* Position du bouton */
 .button-start {
   height: 50vh;
   display: flex;

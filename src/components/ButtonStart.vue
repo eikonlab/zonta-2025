@@ -26,6 +26,7 @@
   color: var(--color-white);
 }
 
+/* Cercles */
 .button-extern,
 .button-intern {
   border-radius: 50%;
@@ -71,12 +72,14 @@
   border: 1.4px solid var(--color-white);
   width: 172px;
   height: 172px;
+
   z-index: 1;
 }
 
 .button-wrapper:hover .button-extern {
   width: 150px;
   height: 150px;
+
   z-index: 2;
 }
 
@@ -85,12 +88,14 @@
   background-color: #ffb27b;
   width: 106px;
   height: 106px;
+
   z-index: 2;
 }
 
 .button-wrapper:hover .button-intern {
   width: 172px;
   height: 172px;
+
   z-index: 1;
 }
 </style>
