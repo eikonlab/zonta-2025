@@ -14,7 +14,9 @@ import IntroText from './../parts/IntroText.vue'
       <IntroWords></IntroWords>
     </div>
 
-    <IntroText></IntroText>
+    <div class="container-fluid">
+      <IntroText></IntroText>
+    </div>
   </div>
 </template>
 

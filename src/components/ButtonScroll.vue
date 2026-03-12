@@ -15,6 +15,7 @@
       <circle class="wheel" cx="35.9961" cy="31.5666" r="1.78317" />
     </svg>
     <p>Scrollez pour Explorer</p>
+    <div id="line"></div>
   </div>
 </template>
 
@@ -29,23 +30,28 @@ p {
   margin-top: 30px;
 }
 
+#line {
+  width: 1.4px;
+  height: 317px;
+  opacity: 0.2;
+  background-color: var(--color-white);
+}
+
+/* Animation souris */
 .scroll-icon {
   overflow: visible;
 }
 
-/* contour souris */
 .mouse {
   fill: none;
   stroke: white;
 }
 
-/* petit cercle */
 .wheel {
   fill: white;
   animation: wheelMove 4s infinite;
 }
 
-/* cercle de pulse */
 .pulse {
   fill: none;
   stroke: white;
