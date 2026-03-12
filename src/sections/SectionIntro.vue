@@ -9,6 +9,7 @@ import IntroText from './../parts/IntroText.vue'
     <div class="container">
       <IntroStart></IntroStart>
     </div>
+
     <div class="container">
       <IntroWords></IntroWords>
     </div>
