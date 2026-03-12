@@ -84,6 +84,10 @@ p {
 
 /* Responsive */
 @media (max-width: 992px) {
+  .screen {
+    height: auto;
+  }
+
   #layout-courage {
     display: flex;
     justify-content: flex-start;
