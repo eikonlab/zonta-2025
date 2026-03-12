@@ -41,7 +41,7 @@
 }
 
 /* Img fond */
-/* .button-wrapper::before {
+.button-wrapper::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -53,29 +53,17 @@
 
   transform: scale(2.5);
 
-  opacity: 0;
-  transition: opacity 0.5s ease;
-
-  z-index: 0;
-}
-
-.button-wrapper:hover::before {
-  opacity: 1;
-} */
-
-.button-wrapper::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-
-  background: url('../../img-button-start.svg') center / 180% no-repeat;
-
   clip-path: circle(0% at 50% 50%);
-  transition: clip-path 0.6s ease;
+  opacity: 0;
+
+  transition:
+    clip-path 0.8s ease,
+    opacity 0.6s ease;
 }
 
 .button-wrapper:hover::before {
   clip-path: circle(120% at 50% 50%);
+  opacity: 1;
 }
 
 /* Grand cercle de base */
@@ -86,19 +74,17 @@
   z-index: 1;
 }
 
+.button-wrapper:hover .button-extern {
+  width: 150px;
+  height: 150px;
+  z-index: 2;
+}
+
 /* Petit cercle de base */
 .button-intern {
   background-color: #ffb27b;
   width: 106px;
   height: 106px;
-  z-index: 2;
-}
-
-/* Hover */
-
-.button-wrapper:hover .button-extern {
-  width: 150px;
-  height: 150px;
   z-index: 2;
 }
 
