@@ -1,5 +1,9 @@
 @import './base.css';
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--color-blue);
   font-family: epilogue, sans-serif;
@@ -80,13 +84,24 @@ em {
   }
 
   em {
-    font-size: 23px;
-
-    line-height: 30px;
-  }
-
-  .quote {
     font-size: 19px;
     line-height: 23px;
   }
+
+  .quote {
+    font-size: 24px;
+    line-height: 26px;
+  }
+}
+
+.row + .row {
+  margin-top: 16px;
+}
+
+.row > .col,
+.row > [class^='col-'] {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: rgba(86, 61, 124, 0.15);
+  border: 1px solid rgba(86, 61, 124, 0.2);
 }

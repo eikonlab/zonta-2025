@@ -40,4 +40,8 @@
 a {
   color: var(--color-blue);
 }
+
+img {
+  width: 392px;
+}
 </style>

@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <a href="" class="button-wrapper">
+    <a href="#intro-words" class="button-wrapper">
       <div class="button-extern"></div>
       <div class="button-intern">
         <p>

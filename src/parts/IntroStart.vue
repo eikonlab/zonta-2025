@@ -6,8 +6,8 @@ import ButtonStart from './../components/ButtonStart.vue'
   <div class="screen">
     <div class="row">
       <div class="col-12">
-        <div class="layout-title">
-          <div class="layout-title-text">
+        <div id="layout-title">
+          <div id="layout-title-text">
             <p>Une expérience <em>interactive</em> par eikonlab</p>
             <p>Découvrez tous vos <em>messages d'amour</em></p>
           </div>
@@ -16,11 +16,11 @@ import ButtonStart from './../components/ButtonStart.vue'
       </div>
     </div>
 
-    <ButtonStart class="button-start"></ButtonStart>
+    <ButtonStart id="button-start"></ButtonStart>
 
     <div class="row">
       <div class="col-12">
-        <div class="layout-end-text">
+        <div id="layout-end-text">
           <p>
             Une initiative de l'association <em>Victime pas seule</em> relayée par le club service
             <em>Zonta</em>
@@ -37,25 +37,18 @@ import ButtonStart from './../components/ButtonStart.vue'
 }
 
 /* Titre et sous titres */
-.layout-title {
+#layout-title {
   display: inline-block;
 }
 
-.layout-title-text {
+#layout-title-text {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-@media (max-width: 768px) {
-  .layout-title-text {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 /* Texte bas */
-.layout-end-text {
+#layout-end-text {
   height: 12vh;
   display: flex;
   justify-content: flex-end;
@@ -63,10 +56,18 @@ import ButtonStart from './../components/ButtonStart.vue'
 }
 
 /* Position du bouton */
-.button-start {
+#button-start {
   height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #layout-title-text {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>
