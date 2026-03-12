@@ -54,6 +54,39 @@ em {
 .quote {
   font-family: arima, sans-serif;
   font-size: 26px;
-  font-style: normal;
   font-weight: 600;
+  line-height: normal;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 53px;
+    line-height: 50px;
+  }
+
+  h2 {
+    font-size: 40px;
+    line-height: 41px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 23px;
+  }
+
+  strong {
+    font-size: 18px;
+    line-height: 23px;
+  }
+
+  em {
+    font-size: 23px;
+
+    line-height: 30px;
+  }
+
+  .quote {
+    font-size: 19px;
+    line-height: 23px;
+  }
 }

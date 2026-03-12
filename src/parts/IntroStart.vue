@@ -5,7 +5,7 @@ import ButtonStart from './../components/ButtonStart.vue'
 <template>
   <div class="screen">
     <div class="row">
-      <div class="col">
+      <div class="col-12">
         <div class="layout-title">
           <div class="layout-title-text">
             <p>Une expérience <em>interactive</em> par eikonlab</p>
@@ -18,11 +18,15 @@ import ButtonStart from './../components/ButtonStart.vue'
 
     <ButtonStart class="button-start"></ButtonStart>
 
-    <div class="layout-end-text">
-      <p>
-        Une initiative de l'association <em>Victime pas seule</em> relayée par le club service
-        <em>Zonta</em>
-      </p>
+    <div class="row">
+      <div class="col-12">
+        <div class="layout-end-text">
+          <p>
+            Une initiative de l'association <em>Victime pas seule</em> relayée par le club service
+            <em>Zonta</em>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -38,7 +42,15 @@ import ButtonStart from './../components/ButtonStart.vue'
 
 .layout-title-text {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .layout-title-text {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .layout-end-text {
@@ -46,11 +58,9 @@ import ButtonStart from './../components/ButtonStart.vue'
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  /* position: absolute;
-  right: 10px;
-  bottom: 20px; */
 }
 
+/* Button position */
 .button-start {
   height: 50vh;
   display: flex;
