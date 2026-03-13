@@ -1,5 +1,9 @@
 <script setup>
 import { onMounted, nextTick } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 onMounted(async () => {
   await nextTick()
@@ -12,29 +16,38 @@ onMounted(async () => {
   ]
 
   const links = document.querySelectorAll('.menu a')
+  const dot = document.querySelector('.active-dot')
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          links.forEach((link) => link.classList.remove('active'))
-
-          const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`)
-
-          if (activeLink) activeLink.classList.add('active')
-        }
-      })
-    },
-    { threshold: 0.1 },
-  )
-
-  sections.forEach((id) => {
+  sections.forEach((id, index) => {
     const section = document.getElementById(id)
-    if (section) observer.observe(section)
-  })
-})
+    if (!section) return
 
-onMounted(() => {})
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top center',
+      end: 'bottom center',
+      onEnter: () => moveDot(index),
+      onEnterBack: () => moveDot(index),
+    })
+  })
+
+  function moveDot(index) {
+    const link = links[index]
+    const linkRect = link.getBoundingClientRect()
+    const menuRect = link.closest('.menu').getBoundingClientRect()
+    const top = linkRect.top - menuRect.top + linkRect.height / 2 - 4 // centre du dot
+
+    gsap.to(dot, {
+      duration: 0.5,
+      top: top,
+      opacity: 1,
+      ease: 'power2.out',
+    })
+  }
+
+  // initial position
+  moveDot(0)
+})
 </script>
 
 <template>
@@ -47,12 +60,14 @@ onMounted(() => {})
         <li><a href="#burger-retour-image">Retour en image</a></li>
         <li><a href="#burger-informations">Informations</a></li>
       </ul>
+      <div class="active-dot"></div>
     </div>
     <div></div>
   </div>
 </template>
 
 <style scoped>
+/* Style lien */
 a {
   font-family: epilogue, sans-serif;
   font-size: 20px;
@@ -67,6 +82,12 @@ a:hover {
   color: var(--color-orange);
 }
 
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* Style burger menu entier */
 .burger-menu {
   background-color: var(--color-white);
   width: 230px;
@@ -87,11 +108,7 @@ a:hover {
   align-self: flex-end;
 }
 
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
+/* Style lien */
 li a::after {
   content: '•';
   margin-left: 8px;
@@ -101,5 +118,26 @@ li a::after {
 
 li a.active::after {
   opacity: 1;
+}
+
+/* Point activé */
+.menu {
+  position: relative;
+}
+
+.menu li {
+  position: relative;
+}
+
+.active-dot {
+  background-color: var(--color-orange);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transform: translateY(0);
 }
 </style>
