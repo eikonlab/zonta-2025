@@ -6,7 +6,7 @@ import IntroScroll from './../parts/IntroScroll.vue'
 </script>
 
 <template>
-  <div id="burger-accueil">
+  <div id="burger-accueil" class="background-orange">
     <div class="container">
       <IntroStart></IntroStart>
     </div>

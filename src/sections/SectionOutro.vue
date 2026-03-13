@@ -6,7 +6,7 @@ import OutroInfo from './../parts/OutroInfo.vue'
 
 <template>
   <div>
-    <div id="burger-retour-image">
+    <div id="burger-retour-image" class="background-orange">
       <OutroAfterMovie></OutroAfterMovie>
     </div>
 
