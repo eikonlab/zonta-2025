@@ -17,7 +17,9 @@ import ButtonStart from './../components/ButtonStart.vue'
       </div>
     </div>
 
-    <ButtonStart id="button-start"></ButtonStart>
+    <div id="button-start">
+      <ButtonStart></ButtonStart>
+    </div>
 
     <div class="row">
       <div class="col-12">

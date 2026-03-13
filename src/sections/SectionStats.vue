@@ -6,13 +6,15 @@ import AllMessages from './../parts/StatsAllMessages.vue'
 </script>
 
 <template>
-  <Statistics></Statistics>
+  <div id="burger-recapitulatif">
+    <Statistics></Statistics>
 
-  <HighlightedMessage></HighlightedMessage>
+    <HighlightedMessage></HighlightedMessage>
 
-  <RecurringMessages></RecurringMessages>
+    <RecurringMessages></RecurringMessages>
 
-  <AllMessages></AllMessages>
+    <AllMessages></AllMessages>
+  </div>
 </template>
 
 <style scoped></style>

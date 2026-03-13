@@ -9,12 +9,16 @@ import { gsap } from 'gsap'
 </script>
 
 <template>
+  <BurgerMenu></BurgerMenu>
+
   <header>
     <PartIntro></PartIntro>
   </header>
+
   <main>
     <PartStats></PartStats>
   </main>
+
   <footer>
     <PartOutro></PartOutro>
   </footer>
