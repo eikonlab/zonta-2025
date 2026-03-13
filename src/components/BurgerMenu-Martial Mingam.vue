@@ -67,19 +67,18 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="burger-menu">
-    <div class="burger"><p>Button</p></div>
-    <div class="burger-layout">
-      <div class="menu">
-        <ul>
-          <li><a href="#burger-accueil">Accueil</a></li>
-          <li><a href="#burger-recapitulatif">Récapitulatif</a></li>
-          <li><a href="#burger-retour-image">Retour en image</a></li>
-          <li><a href="#burger-informations">Informations</a></li>
-        </ul>
-        <div class="active-dot"></div>
-      </div>
+  <div class="burger"><p>Button</p></div>
+  <div class="burger-layout">
+    <div class="menu">
+      <ul>
+        <li><a href="#burger-accueil">Accueil</a></li>
+        <li><a href="#burger-recapitulatif">Récapitulatif</a></li>
+        <li><a href="#burger-retour-image">Retour en image</a></li>
+        <li><a href="#burger-informations">Informations</a></li>
+      </ul>
+      <div class="active-dot"></div>
     </div>
+    <div></div>
   </div>
 </template>
 
@@ -108,52 +107,37 @@ ul {
   padding-left: 15px;
 }
 
-/* Position burger menu entier */
-.burger-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 10;
-}
-
-/* Bouton du burger menu */
-.burger {
-  position: absolute;
-  z-index: 20;
-  top: 10px;
-  right: 16px;
-}
-
-/* Style et position burger menu activé */
+/* Style burger menu entier */
 .burger-layout {
-  background-color: none;
+  background-color: var(--color-orange);
   width: 230px;
   height: 100vh;
   padding: 10px 18px;
 
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
-  pointer-events: none;
-  transition: background-color 0.3s ease;
+  justify-content: space-between;
 }
 
-/* Menu ouvert */
+.burger {
+  align-self: flex-end;
+}
+
+/* Réactivité bouton */
 .menu {
   position: relative;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s;
 }
 
 .menu.is-active {
   opacity: 1;
-  pointer-events: auto;
-}
-
-.burger-layout:has(.menu.is-active) {
-  background-color: var(--color-white);
   pointer-events: auto;
 }
 
