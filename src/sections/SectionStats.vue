@@ -3,10 +3,13 @@ import StatsStatistics from './../parts/StatsStatistics.vue'
 import StatsHighlightedMessage from './../parts/StatsHighlightedMessage.vue'
 import StatsRecurringMessages from './../parts/StatsRecurringMessages.vue'
 import StatsAllMessages from './../parts/StatsAllMessages.vue'
+import Timeline from './../components/Timeline.vue'
 </script>
 
 <template>
   <div id="burger-recapitulatif" class="burger-blue">
+    <!-- <Timeline></Timeline> -->
+
     <div class="container">
       <StatsStatistics></StatsStatistics>
     </div>
