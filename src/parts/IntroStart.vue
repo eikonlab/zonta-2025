@@ -36,7 +36,6 @@ import ButtonStart from './../components/ButtonStart.vue'
 
 <style scoped>
 .screen {
-  height: 100vh;
   position: relative;
 }
 
@@ -76,6 +75,10 @@ import ButtonStart from './../components/ButtonStart.vue'
 @media (max-width: 992px) {
   #layout-title {
     padding-top: 50px;
+  }
+
+  .screen {
+    height: 100vh;
   }
 }
 

@@ -1,19 +1,27 @@
 <script setup>
-import Statistics from './../parts/StatsStatistics.vue'
-import HighlightedMessage from './../parts/StatsHighlightedMessage.vue'
-import RecurringMessages from './../parts/StatsRecurringMessages.vue'
-import AllMessages from './../parts/StatsAllMessages.vue'
+import StatsStatistics from './../parts/StatsStatistics.vue'
+import StatsHighlightedMessage from './../parts/StatsHighlightedMessage.vue'
+import StatsRecurringMessages from './../parts/StatsRecurringMessages.vue'
+import StatsAllMessages from './../parts/StatsAllMessages.vue'
 </script>
 
 <template>
   <div id="burger-recapitulatif" class="burger-blue">
-    <Statistics></Statistics>
+    <div class="container">
+      <StatsStatistics></StatsStatistics>
+    </div>
 
-    <HighlightedMessage></HighlightedMessage>
+    <div class="container">
+      <StatsHighlightedMessage></StatsHighlightedMessage>
+    </div>
 
-    <RecurringMessages></RecurringMessages>
+    <div class="container">
+      <StatsRecurringMessages></StatsRecurringMessages>
+    </div>
 
-    <AllMessages></AllMessages>
+    <div class="container">
+      <StatsAllMessages></StatsAllMessages>
+    </div>
   </div>
 </template>
 

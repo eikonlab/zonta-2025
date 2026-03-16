@@ -20,9 +20,18 @@ import IntroScroll from './../parts/IntroScroll.vue'
     </div>
 
     <div class="container">
-      <IntroScroll></IntroScroll>
+      <div id="desktop-version">
+        <IntroScroll></IntroScroll>
+      </div>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@media (max-width: 576px) {
+  #desktop-version {
+    display: none;
+    pointer-events: none;
+  }
+}
+</style>

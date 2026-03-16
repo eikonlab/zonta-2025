@@ -10,6 +10,16 @@ body {
   background-color: var(--color-light-blue);
 }
 
+.screen {
+  height: 100vh;
+}
+
+@media (max-width: 992px) {
+  .screen {
+    height: auto;
+  }
+}
+
 /* Fonts */
 
 h1 {

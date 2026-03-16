@@ -18,8 +18,13 @@ import ButtonScroll from './../components/ButtonScroll.vue'
 
 <style scoped>
 .screen {
-  height: 100vh;
   position: relative;
+}
+
+@media (max-width: 992px) {
+  .screen {
+    height: 500px;
+  }
 }
 
 /* Position bouton scroll */

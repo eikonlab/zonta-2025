@@ -36,10 +36,6 @@ import ButtonScroll from './../components/ButtonScroll.vue'
 </template>
 
 <style scoped>
-.screen {
-  height: 100vh;
-}
-
 /* Position texte */
 #texts-animation {
   margin-top: 100px;
@@ -62,10 +58,6 @@ img {
   img {
     height: auto;
     max-width: 100%;
-  }
-
-  .screen {
-    height: auto;
   }
 }
 
