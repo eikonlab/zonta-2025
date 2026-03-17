@@ -7,13 +7,17 @@ import OutroInfo from './../parts/OutroInfo.vue'
 <template>
   <div>
     <div id="burger-retour-image" class="burger-orange">
-      <OutroAfterMovie></OutroAfterMovie>
+      <div class="container">
+        <OutroAfterMovie></OutroAfterMovie>
+      </div>
     </div>
 
     <div id="burger-informations" class="burger-blue">
-      <OutroMedia></OutroMedia>
+      <div class="container">
+        <OutroMedia></OutroMedia>
 
-      <OutroInfo></OutroInfo>
+        <OutroInfo></OutroInfo>
+      </div>
     </div>
   </div>
 </template>
