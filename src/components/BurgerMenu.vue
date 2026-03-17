@@ -188,6 +188,14 @@ a:hover {
   opacity: 0.6;
 }
 
+li {
+  transition: all 0.4s ease;
+}
+
+li:hover {
+  transform: scale(1.03);
+}
+
 a.active {
   color: var(--color-orange);
 }

@@ -13,9 +13,10 @@ import OutroInfo from './../parts/OutroInfo.vue'
     </div>
 
     <div id="burger-informations" class="burger-blue">
-      <div class="container">
+      <div class="container-fluid">
         <OutroMedia></OutroMedia>
-
+      </div>
+      <div class="container">
         <OutroInfo></OutroInfo>
       </div>
     </div>
