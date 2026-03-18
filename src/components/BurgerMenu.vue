@@ -140,7 +140,7 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
 
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .bar-icon {
@@ -156,6 +156,8 @@ onMounted(async () => {
   background-color: var(--color-blue);
   height: 3px;
   border-radius: 20px;
+
+  transition: all 0.3s ease;
 }
 
 .bar-top {
@@ -172,7 +174,6 @@ onMounted(async () => {
 
   opacity: 0.6;
 }
-
 /* Style lien */
 a {
   font-family: epilogue, sans-serif;
@@ -296,5 +297,14 @@ ul {
 
 .circle.active-icon .bar {
   background-color: var(--color-blue);
+}
+
+.circle:hover {
+  background-color: var(--color-light-blue);
+  border: 1.4px solid #ff9c56;
+}
+
+.circle:hover .bar {
+  background-color: var(--color-orange);
 }
 </style>
