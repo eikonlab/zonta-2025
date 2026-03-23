@@ -28,8 +28,9 @@ import ButtonShare from './../components/ButtonShare.vue'
                 <p><strong>Numéros d'urgence</strong></p>
                 <p>
                   Police: <strong>117</strong><br />Ambulance: <strong>144</strong><br />La main
-                  tendue: <strong>143</strong><br /><a href="https://www.ciao.ch/">Ciao.ch</a
-                  ><br />Pro Juventute (pour les 11-20 ans): <strong>147</strong>
+                  tendue: <strong>143</strong><br />
+                  <a href="https://www.ciao.ch/"><strong>Ciao.ch</strong> </a><br />Pro Juventute
+                  (pour les 11-20 ans): <strong>147</strong>
                 </p>
               </div>
             </div>

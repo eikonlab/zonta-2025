@@ -258,12 +258,55 @@ function setFilter(category) {
         </text>
       </svg>
 
-      <img id="tree-background" src="./../../img-all-messages-desktop.png" alt="" />
+      <img id="tree-background-desktop" src="./../../img-all-messages-desktop.png" alt="" />
+      <img id="tree-background-mobile" src="./../../img-all-messages-mobile.png" alt="" />
     </div>
   </div>
 </template>
 
 <style scoped>
+/* bouton principal */
+#filters-toggle {
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 29px;
+  padding: 3px 15px 5px;
+  margin-top: 10px;
+  border: 1.4px solid #8fa9c8;
+  background-color: var(--color-light-blue);
+  color: var(--color-blue);
+  cursor: pointer;
+  transition:
+    transform 0.4s ease,
+    color 0.2s ease,
+    border 0.2s ease;
+}
+
+#filters-toggle:hover {
+  color: var(--color-orange);
+  border-color: var(--color-orange);
+  transform: scale(1.04);
+}
+
+/* liste des filtres dropdown */
+#filters-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+/* boutons des filtres */
+#filters-list button {
+  margin-top: 5px;
+}
+
+/* active */
+#filters-list button.active {
+  color: var(--color-white);
+  border: 1.4px solid var(--color-orange);
+  background-color: var(--color-orange);
+}
+
 /* Style filtres */
 #filters {
   display: flex;
@@ -302,8 +345,6 @@ button.active {
   transform: scale(1.04);
 }
 
-/* NEW TEST */
-
 /* Mise en page titre et filtres */
 #layout-content-text {
   padding-top: 40px;
@@ -334,10 +375,14 @@ h2 {
   pointer-events: none;
 }
 
-#tree-background {
+#tree-background-desktop {
   /* Pour image pleine: margin-top: -100px; */
   width: 780px;
   height: auto;
+}
+
+#tree-background-mobile {
+  display: none;
 }
 
 .tree-overlay {
@@ -378,10 +423,6 @@ text {
 }
 
 @media (max-width: 1400px) {
-  h2 {
-    color: pink;
-  }
-
   #text-middle-left {
     top: 130px;
     left: -90px;
@@ -404,10 +445,6 @@ text {
 }
 
 @media (max-width: 1200px) {
-  h2 {
-    color: red;
-  }
-
   #tree-background {
     width: 680px;
     margin-top: -20px;
@@ -446,11 +483,6 @@ text {
     gap: 0 12px;
   }
 
-  h2 {
-    position: relative;
-    color: pink;
-  }
-
   .screen {
     flex-direction: column;
   }
@@ -482,8 +514,14 @@ text {
 }
 
 @media (max-width: 768px) {
-  h2 {
-    color: red;
+  #tree-background-desktop {
+    display: none;
+  }
+
+  #tree-background-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   #text-middle-left {
@@ -507,10 +545,6 @@ text {
 }
 
 @media (max-width: 576px) {
-  h2 {
-    color: pink;
-  }
-
   #text-top {
     left: 40px;
   }
