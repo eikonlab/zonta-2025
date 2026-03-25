@@ -13,86 +13,82 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// FRISE
 onMounted(() => {
-  const timeline = document.querySelector('#timeline-container')
-  const section = document.querySelector('main')
+  const mm = gsap.matchMedia()
 
-  // 🔥 état initial (caché à droite)
-  gsap.set(timeline, {
-    x: 80,
-    opacity: 0,
+  // DESKTOP
+  mm.add('(min-width: 993px)', () => {
+    const timeline = document.querySelector('#timeline-container')
+    const section = document.querySelector('main')
+
+    gsap.set(timeline, { x: 80, opacity: 0, y: 0 })
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1,
+        },
+      })
+      .to(timeline, {
+        x: 0,
+        opacity: 1,
+        ease: 'power2.out',
+        duration: 0.2,
+      })
+      .to(timeline, {
+        y: () => -(timeline.scrollHeight - window.innerHeight),
+        ease: 'none',
+        duration: 1,
+      })
+      .to(timeline, {
+        x: 0,
+        opacity: 0,
+        ease: 'power2.in',
+        duration: 0.2,
+      })
   })
 
-  // 🔥 animation principale liée au scroll
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 1, // 🔥 fluide (pas figé)
-      },
-    })
-    .to(timeline, {
-      x: 0,
-      opacity: 1,
-      ease: 'power2.out',
-      duration: 0.2,
-    })
-    .to(timeline, {
-      y: () => -(timeline.scrollHeight - window.innerHeight),
-      ease: 'none',
-      duration: 1,
-    })
-    .to(timeline, {
-      x: 0,
-      opacity: 0,
-      ease: 'power2.in',
-      duration: 0.2,
-    })
-})
+  // MOBILE
+  mm.add('(max-width: 992px)', () => {
+    const timeline = document.querySelector('#timeline-container-mobile')
+    const section = document.querySelector('main')
 
-// FRISE MOBILE
-onMounted(() => {
-  const timeline = document.querySelector('#timeline-container-mobile')
-  const section = document.querySelector('main') // la section exacte
+    gsap.set(timeline, { y: 50, opacity: 0, x: 0 })
 
-  // ⚡ état initial : caché et bas
-  gsap.set(timeline, { y: 50, opacity: 0 })
-
-  // apparition / disparition avec ScrollTrigger
-  ScrollTrigger.create({
-    trigger: section,
-    start: 'top bottom', // quand le top de la section touche le bas du viewport
-    end: 'bottom bottom', // quand le bas de la section touche le bas du viewport
-    onEnter: () => {
-      gsap.to(timeline, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' })
-    },
-    onLeave: () => {
-      gsap.to(timeline, { y: 50, opacity: 0, duration: 0.5, ease: 'power2.in' })
-    },
-    onEnterBack: () => {
-      gsap.to(timeline, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' })
-    },
-    onLeaveBack: () => {
-      gsap.to(timeline, { y: 50, opacity: 0, duration: 0.5, ease: 'power2.in' })
-    },
-  })
-
-  // déplacement horizontal avec stagger sur les enfants
-  const children = Array.from(timeline.children)
-  gsap.to(children, {
-    x: () => -(timeline.scrollWidth - window.innerWidth),
-    ease: 'none',
-    stagger: 0.1,
-    scrollTrigger: {
+    ScrollTrigger.create({
       trigger: section,
       start: 'top bottom',
-      end: 'bottom top',
-      scrub: true,
-      pin: false, // timeline reste fixed
-    },
+      end: 'bottom bottom',
+      onEnter: () => {
+        gsap.to(timeline, { y: 0, opacity: 1, duration: 0.5 })
+      },
+      onLeave: () => {
+        gsap.to(timeline, { y: 50, opacity: 0, duration: 0.5 })
+      },
+      onEnterBack: () => {
+        gsap.to(timeline, { y: 0, opacity: 1, duration: 0.5 })
+      },
+      onLeaveBack: () => {
+        gsap.to(timeline, { y: 50, opacity: 0, duration: 0.5 })
+      },
+    })
+
+    const children = Array.from(timeline.children)
+
+    gsap.to(children, {
+      x: () => -(timeline.scrollWidth - window.innerWidth),
+      ease: 'none',
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
   })
 })
 </script>
