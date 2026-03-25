@@ -9,7 +9,7 @@ const heroContainer = ref(null)
 let ctx // ← manquant
 
 onMounted(() => {
-  const isMobile = window.innerWidth < 800
+  const isMobile = window.innerWidth < 600
 
   const values = isMobile
     ? {
@@ -40,7 +40,7 @@ onMounted(() => {
         start: 'top top',
         end: 'bottom-=33% top',
         scrub: 1.5,
-        markers: true, // 🔥 debug
+        // markers: true,
       },
     })
 
