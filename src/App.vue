@@ -87,6 +87,7 @@ main {
   right: 0;
   z-index: 10;
   pointer-events: none;
+  display: none;
 }
 
 #timeline-container-mobile {
@@ -95,5 +96,6 @@ main {
   left: 0;
   z-index: 10;
   pointer-events: none;
+  display: none;
 }
 </style>

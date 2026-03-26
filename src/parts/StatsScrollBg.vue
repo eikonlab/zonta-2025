@@ -13,12 +13,12 @@ onMounted(() => {
 
   const values = isMobile
     ? {
-        startX: '135%',
+        startX: '140%',
         startY: '-15%',
-        midX: '-120%',
-        midY: '-15%',
-        endX: '65%',
-        endY: '-250%',
+        midX: '-65%',
+        midY: '-55%',
+        endX: '-5%',
+        endY: '-180%',
       }
     : {
         startX: '175%',
