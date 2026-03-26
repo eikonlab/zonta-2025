@@ -43,7 +43,7 @@ onUnmounted(() => ctx.revert())
 
 <style scoped>
 .bg-container {
-  position: fixed;
+  position: sticky;
   overflow: hidden;
   inset: 0;
   z-index: 2;
@@ -54,21 +54,23 @@ onUnmounted(() => ctx.revert())
   pointer-events: none;
 }
 
-.bg-img {
+.bg-img,
+.bg-img-2,
+.bg-img-3 {
   position: absolute;
   left: 50%;
+  min-width: 100vw;
+}
+
+.bg-img {
   transform: translate(-50%, 0);
 }
 
 .bg-img-2 {
-  position: absolute;
-  left: 50%;
   transform: translate(50%, 0);
 }
 
 .bg-img-3 {
-  position: absolute;
-  left: 50%;
   transform: translate(150%, 0);
 }
 
@@ -77,6 +79,7 @@ onUnmounted(() => ctx.revert())
   .bg-img-2,
   .bg-img-3 {
     height: 100vh;
+    min-width: none;
   }
 }
 
