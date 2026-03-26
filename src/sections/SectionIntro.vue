@@ -3,6 +3,7 @@ import IntroStart from './../parts/IntroStart.vue'
 import IntroWords from './../parts/IntroWords.vue'
 import IntroText from './../parts/IntroText.vue'
 import IntroScroll from './../parts/IntroScroll.vue'
+import IntroMovingBg from './../parts/IntroMovingBg.vue'
 
 // ACCUEIL BLOQUÉ
 defineEmits(['start'])

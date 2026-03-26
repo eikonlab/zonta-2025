@@ -13,77 +13,42 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// ACCUEIL BLOQUÉ
-let hasStarted = false
-let isLocking = false
+// intro interaction
+// let hasStarted = false
+// let isLocking = false
 
-onMounted(() => {
-  // bloque scroll au début
-  document.body.style.overflow = 'hidden'
+// onMounted(() => {
+//   // bloque scroll au début
+//   document.body.style.overflow = 'hidden'
 
-  const intro = document.querySelector('#intro-start')
-  const introWords = document.querySelector('#intro-words')
+//   const intro = document.querySelector('#intro-start')
+//   const introWords = document.querySelector('#intro-words')
 
-  window.addEventListener('scroll', () => {
-    if (!hasStarted || isLocking) return
-    if (!intro) return
+//   window.addEventListener('scroll', () => {
+//     if (!hasStarted || isLocking) return
+//     if (!intro) return
 
-    // empêche de remonter dans la cover
-    if (window.scrollY < window.innerHeight) {
-      isLocking = true
+//     // empêche de remonter dans la cover
+//     if (window.scrollY < window.innerHeight) {
+//       isLocking = true
 
-      introWords.scrollIntoView({ behavior: 'smooth' })
+//       introWords.scrollIntoView({ behavior: 'smooth' })
 
-      setTimeout(() => {
-        isLocking = false
-      }, 50)
-    }
-  })
-})
+//       setTimeout(() => {
+//         isLocking = false
+//       }, 50)
+//     }
+//   })
+// })
 
-function unlockScroll() {
-  hasStarted = true
-  document.body.style.overflow = 'auto'
-}
+// function unlockScroll() {
+//   hasStarted = true
+//   document.body.style.overflow = 'auto'
+// }
 
 // Frise
 onMounted(() => {
   const mm = gsap.matchMedia()
-
-  // DESKTOP PREMIER TEST
-  // mm.add('(min-width: 993px)', () => {
-  //   const timeline = document.querySelector('#timeline-container')
-  //   const section = document.querySelector('main')
-
-  //   gsap.set(timeline, { x: 80, opacity: 0, y: 0 })
-
-  //   gsap
-  //     .timeline({
-  //       scrollTrigger: {
-  //         trigger: section,
-  //         start: 'top top',
-  //         end: 'bottom bottom',
-  //         scrub: 1,
-  //       },
-  //     })
-  //     .to(timeline, {
-  //       x: 0,
-  //       opacity: 1,
-  //       ease: 'power2.out',
-  //       duration: 0.2,
-  //     })
-  //     .to(timeline, {
-  //       y: () => -(timeline.scrollHeight - window.innerHeight),
-  //       ease: 'none',
-  //       duration: 1,
-  //     })
-  //     .to(timeline, {
-  //       x: 0,
-  //       opacity: 1,
-  //       ease: 'power2.in',
-  //       duration: 0.2,
-  //     })
-  // })
 
   // DESKTOP DEUXIÈME TEST
   mm.add('(min-width: 993px)', () => {

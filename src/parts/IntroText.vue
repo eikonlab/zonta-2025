@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="screen">
+  <div class="screen" id="intro-text">
     <div>
       <div class="row">
         <div

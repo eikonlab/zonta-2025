@@ -6,8 +6,8 @@ defineEmits(['start'])
 </script>
 
 <template>
-  <div class="screen">
-    <div id="intro-start">
+  <div class="screen" id="intro-start">
+    <div id="intro-start-container">
       <div class="row">
         <div class="col-12">
           <div id="layout-title">
@@ -26,7 +26,7 @@ defineEmits(['start'])
       </div>
 
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 layout-end-text-col">
           <div id="layout-end-text">
             <p>
               Une initiative de l'association <em>Victime pas seule</em> relayée par le club service
@@ -42,6 +42,18 @@ defineEmits(['start'])
 <style scoped>
 .screen {
   position: relative;
+}
+
+.layout-end-text-col {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+#intro-start-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 /* Titre et sous titres */
@@ -62,10 +74,11 @@ defineEmits(['start'])
 
 /* Texte bas */
 #layout-end-text {
-  position: absolute;
   text-align: right;
-  right: 0;
-  bottom: 20px;
+}
+
+#layout-end-text p {
+  margin: 0;
 }
 
 /* Position du bouton */
@@ -109,6 +122,11 @@ defineEmits(['start'])
 @media (max-width: 576px) {
   #layout-title {
     padding-top: 10px;
+  }
+
+  #layout-end-text {
+    text-align: left;
+    line-clamp: 3;
   }
 }
 
