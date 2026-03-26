@@ -54,24 +54,11 @@ import TimelineMobile from './../components/TimelineMobile.vue'
       <StatsAllMessages></StatsAllMessages>
     </div>
 
-    <div id="scroll-bg">
-      <StatsScrollBg></StatsScrollBg>
-    </div>
+    <StatsScrollBg></StatsScrollBg>
   </div>
 </template>
 
 <style scoped>
-#scroll-bg {
-  position: absolute;
-  overflow: hidden;
-  height: 300vh;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-}
-
 /* Position timeline */
 /* .section-timeline {
   position: relative;

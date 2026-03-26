@@ -16,17 +16,17 @@ onMounted(() => {
         startX: '135%',
         startY: '-15%',
         midX: '-120%',
-        midY: '-50%',
+        midY: '-15%',
         endX: '65%',
         endY: '-250%',
       }
     : {
         startX: '175%',
-        startY: '-10%',
-        midX: '-90%',
-        midY: '-6%',
-        endX: '0%',
-        endY: '-73%',
+        startY: '-15%',
+        midX: '-65%',
+        midY: '-55%',
+        endX: '-5%',
+        endY: '-180%',
       }
   ctx = gsap.context(() => {
     gsap.set(heroImg.value, {
@@ -39,8 +39,8 @@ onMounted(() => {
         trigger: heroContainer.value,
         start: 'top top',
         end: 'bottom-=33% top',
-        scrub: 1.5,
-        // markers: true,
+        scrub: 2,
+        markers: true,
       },
     })
 
@@ -62,10 +62,13 @@ onUnmounted(() => ctx.revert())
 </script>
 
 <template>
-  <div ref="heroContainer" class="heroContainer">
-    <img ref="heroImg" class="heroImg" src="/sapin.svg" alt="" />
+  <div class="absolute-container">
+    <div ref="heroContainer" class="relative-container">
+      <div class="heroContainer">
+        <img ref="heroImg" class="heroImg" src="/sapin.svg" alt="" />
+      </div>
+    </div>
   </div>
-  <div class="scroll"></div>
 </template>
 
 <style scoped>
@@ -75,14 +78,25 @@ onUnmounted(() => ctx.revert())
   margin: 0;
 }
 
-.heroContainer {
+.absolute-container {
   position: absolute;
-  /* overflow: hidden; */
-  width: 100%;
+  inset: 0;
+  z-index: -1;
   height: 300vh;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+  overflow: clip;
+}
+
+.relative-container {
+  position: relative;
+  height: 300vh;
+  /* overflow: hidden; */
+}
+
+.heroContainer {
+  position: sticky;
+  width: 100%;
+  height: 100vh;
+  inset: 0;
 }
 
 img {
