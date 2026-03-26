@@ -11,6 +11,8 @@ defineEmits(['start'])
 
 <template>
   <div id="burger-accueil" class="burger-orange">
+    <IntroMovingBg></IntroMovingBg>
+
     <div class="container">
       <IntroStart @start="$emit('start')"></IntroStart>
     </div>
@@ -22,8 +24,6 @@ defineEmits(['start'])
     <div class="container-fluid">
       <IntroText></IntroText>
     </div>
-
-    <IntroMovingBg></IntroMovingBg>
 
     <div class="container">
       <div id="desktop-version">

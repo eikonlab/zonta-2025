@@ -20,11 +20,12 @@ onUnmounted(() => ctx.revert())
 </script>
 
 <template>
-  <div ref="introContainer" id="scroll-zone"></div>
-  <div ref="bgContainerRef" class="bg-container">
-    <img class="bg-img" src="/bg-p1.svg" alt="" />
-    <img class="bg-img-2" src="/bg-p2.svg" alt="" />
-    <img class="bg-img-3" src="/bg-p3.svg" alt="" />
+  <div ref="introContainer" id="scroll-zone">
+    <div ref="bgContainerRef" class="bg-container">
+      <img class="bg-img" src="/bg-p1.svg" alt="" />
+      <img class="bg-img-2" src="/bg-p2.svg" alt="" />
+      <img class="bg-img-3" src="/bg-p3.svg" alt="" />
+    </div>
   </div>
   <div class="mobile-bg-container">
     <img class="mobile-bg" src="/intro-mobile-bg.svg" alt="" />
@@ -35,8 +36,10 @@ onUnmounted(() => ctx.revert())
 #scroll-zone {
   position: absolute;
   inset: 0;
+  top: 0;
   height: 100%;
   pointer-events: none;
+  overflow: clip;
 }
 
 .bg-container {
@@ -56,10 +59,12 @@ onUnmounted(() => ctx.revert())
   position: absolute;
   top: 0;
   left: 0;
+  overflow: clip;
   /* overflow: hidden; */
   z-index: 1;
   width: 100%;
   height: 400vh;
+  pointer-events: none;
 }
 
 .mobile-bg {

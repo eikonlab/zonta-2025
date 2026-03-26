@@ -42,6 +42,10 @@
   align-items: center;
 }
 
+.intro-text {
+  height: 200vh;
+}
+
 /* Position texte */
 #texts-animation {
   margin-top: 100px;
