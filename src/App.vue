@@ -9,39 +9,159 @@ import TimelineMobile from './components/TimelineMobile.vue'
 
 import { onMounted } from 'vue'
 import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
-// FRISE
+gsap.registerPlugin(ScrollTrigger)
+
+// ACCUEIL BLOQUÉ
+let hasStarted = false
+let isLocking = false
+
 onMounted(() => {
-  const timeline = document.querySelector('#timeline-container-mobile')
-  const section = document.querySelector('main') // a section exacte où ça apparait
+  // bloque scroll au début
+  document.body.style.overflow = 'hidden'
 
-  // état initial : caché en bas
-  gsap.set(timeline, { y: 50, opacity: 0 })
+  const intro = document.querySelector('#intro-start')
+  const introWords = document.querySelector('#intro-words')
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        // apparition depuis le bas
-        gsap.to(timeline, {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          ease: 'power2.out',
-        })
-      } else {
-        // disparition vers le bas
-        gsap.to(timeline, {
-          y: 50,
-          opacity: 0,
-          duration: 0.5,
-          ease: 'power2.in',
-        })
-      }
-    },
-    { threshold: 0 }, // déclenche dès que la section touche le viewport
-  )
+  window.addEventListener('scroll', () => {
+    if (!hasStarted || isLocking) return
+    if (!intro) return
 
-  observer.observe(section)
+    // empêche de remonter dans la cover
+    if (window.scrollY < window.innerHeight) {
+      isLocking = true
+
+      introWords.scrollIntoView({ behavior: 'smooth' })
+
+      setTimeout(() => {
+        isLocking = false
+      }, 50)
+    }
+  })
+})
+
+function unlockScroll() {
+  hasStarted = true
+  document.body.style.overflow = 'auto'
+}
+
+// Frise
+onMounted(() => {
+  const mm = gsap.matchMedia()
+
+  // DESKTOP PREMIER TEST
+  // mm.add('(min-width: 993px)', () => {
+  //   const timeline = document.querySelector('#timeline-container')
+  //   const section = document.querySelector('main')
+
+  //   gsap.set(timeline, { x: 80, opacity: 0, y: 0 })
+
+  //   gsap
+  //     .timeline({
+  //       scrollTrigger: {
+  //         trigger: section,
+  //         start: 'top top',
+  //         end: 'bottom bottom',
+  //         scrub: 1,
+  //       },
+  //     })
+  //     .to(timeline, {
+  //       x: 0,
+  //       opacity: 1,
+  //       ease: 'power2.out',
+  //       duration: 0.2,
+  //     })
+  //     .to(timeline, {
+  //       y: () => -(timeline.scrollHeight - window.innerHeight),
+  //       ease: 'none',
+  //       duration: 1,
+  //     })
+  //     .to(timeline, {
+  //       x: 0,
+  //       opacity: 1,
+  //       ease: 'power2.in',
+  //       duration: 0.2,
+  //     })
+  // })
+
+  // DESKTOP DEUXIÈME TEST
+  mm.add('(min-width: 993px)', () => {
+    const timeline = document.querySelector('#timeline-container')
+    const section = document.querySelector('main')
+
+    // // hauteur de scroll de la section
+    // const getSectionScroll = () => section.scrollHeight - window.innerHeight
+
+    // // hauteur de scroll de la frise
+    // const getTimelineScroll = () => timeline.scrollHeight - window.innerHeight
+
+    // // sécurité : si la frise est plus petite → pas d’animation
+    // if (getTimelineScroll() <= 0) return
+
+    gsap.to(timeline, {
+      y: () => -(timeline.scrollHeight - window.innerHeight),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    })
+
+    // optionnel : gérer l'opacité en dehors de <main>
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top top+=10%',
+      end: 'bottom bottom-=10%',
+      onEnter: () => gsap.set(timeline, { opacity: 1 }),
+      onLeave: () => gsap.set(timeline, { opacity: 0 }),
+      onEnterBack: () => gsap.set(timeline, { opacity: 1 }),
+      onLeaveBack: () => gsap.set(timeline, { opacity: 0 }),
+    })
+  })
+
+  // MOBILE
+  mm.add('(max-width: 992px)', () => {
+    const timeline = document.querySelector('#timeline-container-mobile')
+    const section = document.querySelector('main')
+
+    gsap.set(timeline, { y: 50, opacity: 0, x: 0 })
+
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top bottom',
+      end: 'bottom bottom',
+      onEnter: () => {
+        gsap.to(timeline, { y: 0, opacity: 1, duration: 0.5 })
+      },
+      onLeave: () => {
+        gsap.to(timeline, { y: 50, opacity: 0, duration: 0.5 })
+      },
+      onEnterBack: () => {
+        gsap.to(timeline, { y: 0, opacity: 1, duration: 0.5 })
+      },
+      onLeaveBack: () => {
+        gsap.to(timeline, { y: 50, opacity: 0, duration: 0.5 })
+      },
+    })
+
+    const children = Array.from(timeline.children)
+
+    gsap.to(children, {
+      x: () => -(timeline.scrollWidth - window.innerWidth),
+      ease: 'none',
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
+  })
 })
 </script>
 
@@ -49,10 +169,10 @@ onMounted(() => {
   <BurgerMenu></BurgerMenu>
 
   <header>
-    <PartIntro></PartIntro>
+    <PartIntro @start="unlockScroll"></PartIntro>
   </header>
 
-  <main>
+  <main id="main">
     <div id="timeline-container-mobile">
       <TimelineMobile></TimelineMobile>
     </div>
@@ -70,32 +190,58 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@media (max-width: 0px) {
-  h1 {
-    font-size: 30px;
-  }
-}
-
 /* Frise */
 main {
+  display: flex;
   position: relative;
 }
 
-#timeline-container {
-  position: absolute;
+/* FRISE PREMIER TEST */
+/* #timeline-container {
+  position: fixed;
   top: 0;
   right: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#timeline-container {
+  height: auto;
+} */
+
+/* FRISE DEUXIEME TEST */
+#timeline-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 230px;
   z-index: 10;
   pointer-events: none;
   display: none;
 }
 
+/* FRISE MOBILE */
 #timeline-container-mobile {
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 10;
   pointer-events: none;
+
   display: none;
+  opacity: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 992px) {
+  #timeline-container-mobile {
+    display: block;
+    opacity: 1;
+  }
+
+  #timeline-container {
+    display: none;
+    opacity: 0;
+  }
 }
 </style>

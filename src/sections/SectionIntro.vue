@@ -3,17 +3,15 @@ import IntroStart from './../parts/IntroStart.vue'
 import IntroWords from './../parts/IntroWords.vue'
 import IntroText from './../parts/IntroText.vue'
 import IntroScroll from './../parts/IntroScroll.vue'
-import IntroMovingBg from './../parts/IntroMovingBg.vue'
 
-function handleButtonClick() {
-  console.log('Click reçu dans IntroMovingBg')
-}
+// ACCUEIL BLOQUÉ
+defineEmits(['start'])
 </script>
 
 <template>
   <div id="burger-accueil" class="burger-orange">
     <div class="container">
-      <IntroStart @click-start="handleButtonClick"></IntroStart>
+      <IntroStart @start="$emit('start')"></IntroStart>
     </div>
 
     <div class="container">

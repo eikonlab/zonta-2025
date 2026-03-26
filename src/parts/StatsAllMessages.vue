@@ -445,9 +445,8 @@ text {
 }
 
 @media (max-width: 1200px) {
-  #tree-background {
-    width: 680px;
-    margin-top: -20px;
+  #filters {
+    width: 255px;
   }
 
   #text-top {
@@ -461,7 +460,7 @@ text {
 
   #text-middle-right {
     top: 240px;
-    right: 130px;
+    right: 230px;
   }
 
   #text-bottom-left {
@@ -470,17 +469,22 @@ text {
   }
 
   #text-bottom-right {
-    right: 140px;
+    right: 200px;
     bottom: 0;
   }
 }
 
 @media (max-width: 992px) {
+  h2 {
+    position: relative;
+  }
+
   #filters {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0 12px;
+    width: auto;
   }
 
   .screen {

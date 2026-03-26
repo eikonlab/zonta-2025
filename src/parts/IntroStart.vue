@@ -1,35 +1,38 @@
 <script setup>
 import ButtonStart from './../components/ButtonStart.vue'
-import { defineEmits } from 'vue'
-const emit = defineEmits(['click-start'])
+
+// ACCUEIL BLOQUÉ
+defineEmits(['start'])
 </script>
 
 <template>
   <div class="screen">
-    <div class="row">
-      <div class="col-12">
-        <div id="layout-title">
-          <div id="layout-title-text">
-            <p>Une expérience <em>interactive</em> par eikonlab</p>
-            <p id="text-discover">Découvrez tous vos <em>messages d'amour</em></p>
+    <div id="intro-start">
+      <div class="row">
+        <div class="col-12">
+          <div id="layout-title">
+            <div id="layout-title-text">
+              <p>Une expérience <em>interactive</em> par eikonlab</p>
+              <p id="text-discover">Découvrez tous vos <em>messages d'amour</em></p>
+            </div>
+            <h1>Sapin porte-paroles</h1>
+            <p id="text-discover-mobile">Découvrez tous vos <em>messages d'amour</em></p>
           </div>
-          <h1>Sapin porte-paroles</h1>
-          <p id="text-discover-mobile">Découvrez tous vos <em>messages d'amour</em></p>
         </div>
       </div>
-    </div>
 
-    <div id="button-start">
-      <ButtonStart @click-start="$emit('click-start')"></ButtonStart>
-    </div>
+      <div id="button-start">
+        <ButtonStart @start="$emit('start')"></ButtonStart>
+      </div>
 
-    <div class="row">
-      <div class="col-12">
-        <div id="layout-end-text">
-          <p>
-            Une initiative de l'association <em>Victime pas seule</em> relayée par le club service
-            <em>Zonta</em>
-          </p>
+      <div class="row">
+        <div class="col-12">
+          <div id="layout-end-text">
+            <p>
+              Une initiative de l'association <em>Victime pas seule</em> relayée par le club service
+              <em>Zonta</em>
+            </p>
+          </div>
         </div>
       </div>
     </div>

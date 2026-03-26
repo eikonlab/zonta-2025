@@ -234,6 +234,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
   color: var(--color-orange);
 
   align-self: flex-start;
+  margin-left: 240px;
 }
 
 /* Style texte final */
@@ -249,11 +250,6 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
 
   align-self: flex-start;
 }
-
-/* Position du mois */
-/* :deep(.month-position) {
-  align-self: flex-start;
-} */
 
 /* Largeur long texte */
 #text-width :deep(#timeline-wrapper) {

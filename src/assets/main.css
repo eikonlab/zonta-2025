@@ -110,6 +110,7 @@ em {
   }
 }
 
+/* Highlight Bootstrap */
 .row + .row {
   margin-top: 16px;
 }

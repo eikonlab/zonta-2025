@@ -230,6 +230,7 @@ import TimelineMonth from './TimelineMonth.vue'
   color: var(--color-orange);
   text-align: end;
   margin-right: 32px;
+  margin-top: 100px;
 }
 
 /* Style texte final */

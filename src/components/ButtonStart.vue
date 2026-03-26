@@ -1,12 +1,21 @@
 <script setup>
-import { defineEmits } from 'vue'
+// ACCUEIL BLOQUÉ
+const emit = defineEmits(['start'])
 
-const emit = defineEmits(['click-start'])
+function startExperience() {
+  const main = document.querySelector('main')
+
+  emit('start') // 🔥 envoie vers IntroStart
+
+  main.scrollIntoView({
+    behavior: 'smooth',
+  })
+}
 </script>
 
 <template>
   <div>
-    <a href="#intro-words" class="button-wrapper" @click.prevent="emit('click-start')">
+    <a href="#intro-words" class="button-wrapper" @click.prevent="startExperience">
       <div class="button-extern"></div>
       <div class="button-intern">
         <p>
