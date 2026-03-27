@@ -5,8 +5,48 @@ import IntroText from './../parts/IntroText.vue'
 import IntroScroll from './../parts/IntroScroll.vue'
 import IntroMovingBg from './../parts/IntroMovingBg.vue'
 
-// ACCUEIL BLOQUÉ
-defineEmits(['start'])
+import { onMounted } from 'vue'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+// timing values
+const skipWordsDelay = 3000
+const skipTextDelay = 5000
+const tutorialDelay = 2000
+
+function HandleStart() {
+  window.scrollTo({
+    top: window.innerHeight,
+    behavior: 'smooth',
+  })
+
+  setTimeout(() => {
+    // hasStarted = true
+    window.scrollTo({
+      top: window.innerHeight * 2,
+      behavior: 'smooth',
+    })
+  }, skipWordsDelay)
+
+  setTimeout(() => {
+    // hasStarted = true
+    window.scrollTo({
+      top: window.innerHeight * 3,
+      behavior: 'smooth',
+    })
+
+    setTimeout(() => {
+      window.addEventListener('wheel', (e) => e, { passive: false })
+    }, tutorialDelay)
+  }, skipTextDelay + skipWordsDelay)
+}
+
+onMounted(() => {
+  // bloque scroll au début
+  // window.addEventListener('wheel', (e) => e.preventDefault(), { passive: false })
+})
 </script>
 
 <template>
@@ -14,7 +54,7 @@ defineEmits(['start'])
     <IntroMovingBg></IntroMovingBg>
 
     <div class="container">
-      <IntroStart @start="$emit('start')"></IntroStart>
+      <IntroStart @start="HandleStart"></IntroStart>
     </div>
 
     <div class="container">

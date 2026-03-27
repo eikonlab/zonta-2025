@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="screen" id="intro-text">
+  <div id="intro-text">
     <div>
       <div class="row">
         <div
@@ -42,7 +42,7 @@
   align-items: center;
 }
 
-.intro-text {
+#intro-text {
   height: 200vh;
 }
 

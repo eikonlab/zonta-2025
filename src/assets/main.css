@@ -11,6 +11,15 @@ body {
   background-color: var(--color-light-blue);
 }
 
+/* hide scrollbar */
+/* * {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+} */
+
 /* Pages */
 .screen {
   height: 100vh;

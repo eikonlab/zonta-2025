@@ -10,12 +10,9 @@ import TimelineMobile from './components/TimelineMobile.vue'
 import { onMounted } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import ScrollToPlugin from 'gsap/ScrollToPlugin'
 
-gsap.registerPlugin(ScrollTrigger)
-
-// intro interaction
-// let hasStarted = false
-// let isLocking = false
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 // onMounted(() => {
 //   // bloque scroll au début
@@ -134,7 +131,7 @@ onMounted(() => {
   <BurgerMenu></BurgerMenu>
 
   <header>
-    <PartIntro @start="unlockScroll"></PartIntro>
+    <PartIntro></PartIntro>
   </header>
 
   <main id="main">
