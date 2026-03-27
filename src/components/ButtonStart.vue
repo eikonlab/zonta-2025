@@ -58,6 +58,8 @@ function startExperience() {
   position: absolute;
   inset: 0;
 
+  pointer-events: none;
+
   background-image: url('../../img-button-start.svg');
   background-size: contain;
   background-position: center;

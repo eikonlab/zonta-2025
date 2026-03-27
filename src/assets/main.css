@@ -2,13 +2,14 @@
 
 html {
   scroll-behavior: smooth;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 body {
   color: var(--color-blue);
   font-family: epilogue, sans-serif;
   background-color: var(--color-light-blue);
+  overflow-x: hidden;
 }
 
 /* hide scrollbar */
