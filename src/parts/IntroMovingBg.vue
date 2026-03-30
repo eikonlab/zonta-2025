@@ -142,7 +142,7 @@ onUnmounted(() => ctx.value.revert())
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 576px) {
   .mobile-bg-container,
   .mobile-bg {
     display: none;

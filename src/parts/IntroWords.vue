@@ -91,6 +91,14 @@ p {
 /* Mise en page centrée des mots */
 #layout-all-words {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#layout-all-words .row {
+  margin: 0;
 }
 
 /* Mise en page mot Courage */
@@ -137,6 +145,29 @@ p {
 
   #word-solidarite {
     margin-top: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  p {
+    font-size: 40px;
+    padding: 24px;
+  }
+
+  #word-espoir {
+    margin-top: 45px;
+  }
+
+  #word-soutien {
+    margin-top: 55px;
+  }
+
+  #word-respect {
+    margin-top: 75px;
+  }
+
+  #word-solidarite {
+    margin-top: 10px;
   }
 }
 

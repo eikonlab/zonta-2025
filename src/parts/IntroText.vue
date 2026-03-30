@@ -2,7 +2,6 @@
 
 <template>
   <div class="screen" id="intro-text">
-    <!-- <div> -->
     <div class="row">
       <div
         class="col-12 col-sm-10 col-md-6 col-lg-5 offset-0 offset-sm-1 offset-md-0 offset-lg-1 offset-xl-2"
@@ -31,16 +30,10 @@
         </div>
       </div>
     </div>
-    <!-- </div> -->
   </div>
 </template>
 
 <style scoped>
-.screen {
-  display: flex;
-  align-items: center;
-}
-
 /* Position texte */
 #texts-animation {
   margin-top: 100px;
@@ -50,6 +43,11 @@
 img {
   max-width: 413px;
   height: auto;
+}
+
+.screen {
+  display: flex;
+  align-items: center;
 }
 
 .image-col {
@@ -66,7 +64,7 @@ img {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   #texts-animation {
     margin-top: 0;
   }
@@ -85,9 +83,9 @@ img {
   }
 }
 
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
   .image-col {
     padding-left: 0;
   }
-}
+} */
 </style>
