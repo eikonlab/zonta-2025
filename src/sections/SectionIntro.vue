@@ -93,7 +93,7 @@ onMounted(() => {
       <IntroText></IntroText>
     </div>
 
-    <div class="container gsap-container">
+    <div class="gsap-container">
       <div id="desktop-version">
         <IntroScroll></IntroScroll>
       </div>
@@ -102,6 +102,14 @@ onMounted(() => {
 </template>
 
 <style scoped>
+#desktop-version {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
 @media (max-width: 576px) {
   #desktop-version {
     display: none;
