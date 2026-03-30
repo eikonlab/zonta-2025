@@ -79,16 +79,13 @@ a {
   text-decoration: underline 1.4px;
 }
 
-a:hover {
-  opacity: 0.6;
-}
-
 p {
   transition: all 0.4s ease;
 }
 
 a:hover p {
   transform: scale(1.02);
+  opacity: 0.6;
 }
 
 img {

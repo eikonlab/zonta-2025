@@ -14,7 +14,6 @@ onMounted(() => {
   gsap.set('#date', { y: -30, opacity: 0 })
   gsap.set('#name', { y: 30, opacity: 0 })
 
-  // Timeline
   tl
     // Entrée
     .to('#quote', {
@@ -134,8 +133,13 @@ onMounted(() => {
 }
 
 #quote {
+  font-family: arima, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+
   margin: 0 0 20px;
   transition: opacity 0.3s;
+  line-height: 26px;
 }
 
 /* Position informations  */
@@ -152,7 +156,8 @@ onMounted(() => {
     font-family: arima, sans-serif;
     font-size: 21px;
     font-weight: 300;
-    line-height: 10px;
+    line-height: 21px;
+    margin-bottom: 10px;
   }
 
   #quote {

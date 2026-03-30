@@ -112,6 +112,12 @@
 }
 
 /* Responsive */
+@media (min-width: 992px) {
+  .screen {
+    padding-left: 60px;
+  }
+}
+
 @media (max-width: 992px) {
   #sentence-violence {
     margin-bottom: 100px;
