@@ -46,7 +46,7 @@ function HandleStart() {
     state.value = 4
 
     setTimeout(() => {
-      window.addEventListener('wheel', (e) => e, { passive: false })
+      // window.addEventListener('wheel', (e) => e, { passive: true })
     }, tutorialDelay)
   }, skipTextDelay + skipWordsDelay)
 }

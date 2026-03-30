@@ -2,14 +2,12 @@
 
 <template>
   <div class="screen">
-    <div>
-      <div class="row">
-        <div class="col-12 col-lg-2" id="layout-margin">
-          <h3>Retour en image</h3>
-        </div>
-        <div class="col-12 col-lg-8">
-          <div class="video"></div>
-        </div>
+    <div class="row">
+      <div class="col-12 col-lg-2" id="layout-margin">
+        <h3>Retour en image</h3>
+      </div>
+      <div class="col-12 col-lg-10">
+        <div class="video"></div>
       </div>
     </div>
   </div>
@@ -17,7 +15,10 @@
 
 <style scoped>
 .screen {
-  padding-top: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 /* Font */
@@ -26,9 +27,15 @@ h3 {
   text-align: end;
 }
 
+.row {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+}
+
 /* Style vidéo */
 .video {
-  width: 100%;
+  height: 100%;
   aspect-ratio: 5 / 4;
   background-color: var(--color-white);
 }

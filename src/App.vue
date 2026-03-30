@@ -7,7 +7,7 @@ import BurgerMenu from './components/BurgerMenu.vue'
 import Timeline from './components/Timeline.vue'
 import TimelineMobile from './components/TimelineMobile.vue'
 
-import { onMounted } from 'vue'
+import { onMounted, onBeforeUnmount } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -130,7 +130,7 @@ onMounted(() => {
   function updateItems() {
     items.forEach((item) => {
       const rect = item.getBoundingClientRect()
-      const viewportCenter = window.innerHeight / 2
+      // const viewportCenter = window.innerHeight / 2
 
       const date = item.querySelector('.date')
       const location = item.querySelector('.location')

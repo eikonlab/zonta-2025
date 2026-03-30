@@ -345,6 +345,7 @@ h2 {
 /* Mise en page de toute la page */
 .screen {
   display: flex;
+  overflow-y: clip;
 }
 
 /* Courbes */
