@@ -4,14 +4,8 @@ import ButtonScroll from './../components/ButtonScroll.vue'
 
 <template>
   <div class="screen" id="intro-scroll">
-    <div class="row">
-      <div class="col-12">
-        <div id="layout-button-scroll">
-          <div id="position-button-scroll">
-            <ButtonScroll></ButtonScroll>
-          </div>
-        </div>
-      </div>
+    <div id="position-button-scroll">
+      <ButtonScroll></ButtonScroll>
     </div>
   </div>
 </template>

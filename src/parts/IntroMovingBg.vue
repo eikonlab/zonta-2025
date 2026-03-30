@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger)
 const introContainer = ref(null)
 const bgContainerRef = ref(null)
 let ctx = ref(null)
-const bgImg = ref(null)
+const bgImgLast = ref(null)
 let imageWidth
 
 const props = defineProps({
@@ -29,15 +29,15 @@ const animate = (newState, transition) => {
 }
 
 onMounted(() => {
-  bgImg.value.onload = () => {
-    const rect = bgImg.value.getBoundingClientRect()
+  bgImgLast.value.onload = () => {
+    const rect = bgImgLast.value.getBoundingClientRect()
     imageWidth = rect.width
     console.log('imageWidth', imageWidth)
     animate(props.state, false)
   }
   // Si déjà cachée
-  if (bgImg.value.complete) {
-    bgImg.value.onload()
+  if (bgImgLast.value.complete) {
+    bgImgLast.value.onload()
   }
 })
 
@@ -45,6 +45,12 @@ watch(
   () => props.state,
   (newState) => {
     animate(newState, true)
+    if (newState === 4) {
+      gsap.to(bgImgLast.value, {
+        scale: 1.2,
+        duration: 0.5,
+      })
+    }
   },
 )
 
@@ -54,9 +60,9 @@ onUnmounted(() => ctx.value.revert())
 <template>
   <div ref="introContainer" id="scroll-zone">
     <div ref="bgContainerRef" class="bg-container">
-      <img ref="bgImg" class="bg-img" src="/bg-p1.svg" alt="" />
+      <img class="bg-img" src="/bg-p1.svg" alt="" />
       <img class="bg-img-2" src="/bg-p2.svg" alt="" />
-      <img class="bg-img-3" src="/bg-p3.svg" alt="" />
+      <img ref="bgImgLast" class="bg-img-3" src="/bg-p3.svg" alt="" />
     </div>
   </div>
   <div class="mobile-bg-container">
@@ -70,7 +76,7 @@ onUnmounted(() => ctx.value.revert())
   inset: 0;
   height: 100%;
   pointer-events: none;
-  /* overflow: clip; */
+  overflow: clip;
 }
 
 .bg-container {
@@ -78,7 +84,7 @@ onUnmounted(() => ctx.value.revert())
   position: sticky;
   top: 0;
   bottom: 0;
-  z-index: 2;
+  z-index: 0;
   height: 100vh;
   display: flex;
   flex-flow: row nowrap;
@@ -92,7 +98,7 @@ onUnmounted(() => ctx.value.revert())
   left: 0;
   overflow: clip;
   /* overflow: hidden; */
-  z-index: 1;
+  z-index: 0;
   width: 100%;
   height: 400vh;
   pointer-events: none;
