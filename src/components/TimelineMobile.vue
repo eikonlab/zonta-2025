@@ -6,7 +6,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
 
 <template>
   <div id="timeline-wrapper">
-    <p id="year-text">2025</p>
+    <p id="year-text">Féminicides en 2025</p>
     <TimelineMobileMonth month="Janvier"></TimelineMobileMonth>
     <TimelineMobileLine></TimelineMobileLine>
     <TimelineMobileLine></TimelineMobileLine>

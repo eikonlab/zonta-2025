@@ -11,234 +11,336 @@ import { onMounted } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
+// Frise
 gsap.registerPlugin(ScrollTrigger)
 
-// ACCUEIL BLOQUÉ
-let hasStarted = false
-let isLocking = false
-
-onMounted(() => {
-  // bloque scroll au début
-  document.body.style.overflow = 'hidden'
-
-  const intro = document.querySelector('#intro-start')
-  const introWords = document.querySelector('#intro-words')
-
-  window.addEventListener('scroll', () => {
-    if (!hasStarted || isLocking) return
-    if (!intro) return
-
-    // empêche de remonter dans la cover
-    if (window.scrollY < window.innerHeight) {
-      isLocking = true
-
-      introWords.scrollIntoView({ behavior: 'smooth' })
-
-      setTimeout(() => {
-        isLocking = false
-      }, 50)
-    }
-  })
-})
-
-function unlockScroll() {
-  hasStarted = true
-  document.body.style.overflow = 'auto'
-}
-
-// Frise
 onMounted(() => {
   const mm = gsap.matchMedia()
 
-  // DESKTOP PREMIER TEST
-  // mm.add('(min-width: 993px)', () => {
-  //   const timeline = document.querySelector('#timeline-container')
-  //   const section = document.querySelector('main')
-
-  //   gsap.set(timeline, { x: 80, opacity: 0, y: 0 })
-
-  //   gsap
-  //     .timeline({
-  //       scrollTrigger: {
-  //         trigger: section,
-  //         start: 'top top',
-  //         end: 'bottom bottom',
-  //         scrub: 1,
-  //       },
-  //     })
-  //     .to(timeline, {
-  //       x: 0,
-  //       opacity: 1,
-  //       ease: 'power2.out',
-  //       duration: 0.2,
-  //     })
-  //     .to(timeline, {
-  //       y: () => -(timeline.scrollHeight - window.innerHeight),
-  //       ease: 'none',
-  //       duration: 1,
-  //     })
-  //     .to(timeline, {
-  //       x: 0,
-  //       opacity: 1,
-  //       ease: 'power2.in',
-  //       duration: 0.2,
-  //     })
-  // })
-
-  // DESKTOP DEUXIÈME TEST
+  // Frise desktop
   mm.add('(min-width: 993px)', () => {
-    const timeline = document.querySelector('#timeline-container')
-    const section = document.querySelector('main')
+    const timeline = document.querySelector('#timeline-content')
 
-    // // hauteur de scroll de la section
-    // const getSectionScroll = () => section.scrollHeight - window.innerHeight
+    if (!timeline) return
 
-    // // hauteur de scroll de la frise
-    // const getTimelineScroll = () => timeline.scrollHeight - window.innerHeight
+    const getMoveY = () => {
+      const timelineHeight = timeline.scrollHeight
+      const viewportHeight = window.innerHeight
 
-    // // sécurité : si la frise est plus petite → pas d’animation
-    // if (getTimelineScroll() <= 0) return
+      return Math.max(timelineHeight - viewportHeight, 0)
+    }
 
     gsap.to(timeline, {
-      y: () => -(timeline.scrollHeight - window.innerHeight),
+      y: () => -getMoveY(),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#main',
+        start: 'top top',
+        end: '+=300%',
+        scrub: true,
+        invalidateOnRefresh: true,
+        markers: false,
+      },
+    })
+  })
+
+  mm.add('(max-width: 992px)', () => {
+    const timeline = document.querySelector('#timeline-content-mobile')
+    const section = document.querySelector('#main')
+
+    if (!timeline || !section) return
+
+    const getMoveX = () => {
+      return timeline.scrollWidth - window.innerWidth
+    }
+
+    const getScroll = () => {
+      return section.offsetHeight - window.innerHeight
+    }
+
+    if (getMoveX() <= 0) return
+
+    gsap.to(timeline, {
+      x: () => -getMoveX(),
       ease: 'none',
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: 'bottom bottom',
+        end: () => `+=${getScroll()}`,
         scrub: true,
         invalidateOnRefresh: true,
       },
     })
-
-    // optionnel : gérer l'opacité en dehors de <main>
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top top+=10%',
-      end: 'bottom bottom-=10%',
-      onEnter: () => gsap.set(timeline, { opacity: 1 }),
-      onLeave: () => gsap.set(timeline, { opacity: 0 }),
-      onEnterBack: () => gsap.set(timeline, { opacity: 1 }),
-      onLeaveBack: () => gsap.set(timeline, { opacity: 0 }),
-    })
   })
+})
 
-  // MOBILE
-  mm.add('(max-width: 992px)', () => {
-    const timeline = document.querySelector('#timeline-container-mobile')
-    const section = document.querySelector('main')
+// Animmation apparition texte
+// onMounted(() => {
+//   const items = document.querySelectorAll('.timeline-item')
 
-    gsap.set(timeline, { y: 50, opacity: 0, x: 0 })
+//   function updateItems() {
+//     items.forEach((item) => {
+//       const rect = item.getBoundingClientRect()
+//       const viewportCenter = window.innerHeight / 2
 
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top bottom',
-      end: 'bottom bottom',
-      onEnter: () => {
-        gsap.to(timeline, { y: 0, opacity: 1, duration: 0.5 })
-      },
-      onLeave: () => {
-        gsap.to(timeline, { y: 50, opacity: 0, duration: 0.5 })
-      },
-      onEnterBack: () => {
-        gsap.to(timeline, { y: 0, opacity: 1, duration: 0.5 })
-      },
-      onLeaveBack: () => {
-        gsap.to(timeline, { y: 50, opacity: 0, duration: 0.5 })
-      },
+//       const date = item.querySelector('.date')
+//       const location = item.querySelector('.location')
+
+//       if (!date || !location) return
+
+//       // 🔥 distance au centre
+//       const itemCenter = rect.top + rect.height / 2
+//       const distance = Math.abs(viewportCenter - itemCenter)
+
+//       // 🔥 zone active (à ajuster)
+//       const threshold = 200
+
+//       if (distance < threshold) {
+//         // visible → on montre
+//         gsap.to([date, location], {
+//           opacity: 1,
+//           y: 0,
+//           duration: 0.3,
+//           overwrite: true,
+//         })
+//       } else {
+//         // hors centre → on cache
+//         gsap.to([date, location], {
+//           opacity: 0,
+//           y: 10,
+//           duration: 0.3,
+//           overwrite: true,
+//         })
+//       }
+//     })
+//   }
+
+//   // 🔥 sync avec GSAP scroll
+//   gsap.ticker.add(updateItems)
+
+//   // cleanup (important en Vue)
+//   onBeforeUnmount(() => {
+//     gsap.ticker.remove(updateItems)
+//   })
+// })
+
+onMounted(() => {
+  const items = document.querySelectorAll('.timeline-item')
+
+  function updateItems() {
+    items.forEach((item) => {
+      const rect = item.getBoundingClientRect()
+      const viewportCenter = window.innerHeight / 2
+
+      const date = item.querySelector('.date')
+      const location = item.querySelector('.location')
+      const age = item.querySelector('.age')
+      const line = item.querySelector('.big-line')
+
+      if (!date || !location || !age || !line) return
+
+      const itemCenter = rect.top + rect.height / 2
+
+      const start = window.innerHeight * 0.35
+      const end = window.innerHeight * 0.65
+
+      const isActive = itemCenter > start && itemCenter < end
+
+      // 🔥 éviter de relancer l’anim en boucle
+      if (item._active === isActive) return
+      item._active = isActive
+
+      if (isActive) {
+        // 🟢 ÉTAT ACTIF
+        gsap.to([date, location], {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          ease: 'power2.out',
+        })
+
+        gsap.to(age, {
+          y: 0,
+          duration: 0.3,
+          ease: 'power2.out',
+        })
+
+        gsap.to(line, {
+          scaleX: 1,
+          x: 0,
+          duration: 0.3,
+          ease: 'power2.out',
+        })
+      } else {
+        // 🔴 ÉTAT COMPACT
+        gsap.to([date, location], {
+          opacity: 0,
+          y: 10,
+          duration: 0.3,
+          ease: 'power2.in',
+        })
+
+        gsap.to(age, {
+          y: -10,
+          duration: 0.3,
+          ease: 'power2.in',
+        })
+
+        gsap.to(line, {
+          scaleX: 0.3,
+          x: 130, // 🔥 ton besoin ici
+          duration: 0.3,
+          ease: 'power2.in',
+        })
+      }
     })
+  }
 
-    const children = Array.from(timeline.children)
+  // 🔥 sync avec GSAP scroll
+  gsap.ticker.add(updateItems)
 
-    gsap.to(children, {
-      x: () => -(timeline.scrollWidth - window.innerWidth),
-      ease: 'none',
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true,
-      },
-    })
+  // cleanup (important en Vue)
+  onBeforeUnmount(() => {
+    gsap.ticker.remove(updateItems)
   })
 })
 </script>
 
 <template>
-  <BurgerMenu></BurgerMenu>
+  <div id="website">
+    <BurgerMenu></BurgerMenu>
 
-  <header>
-    <PartIntro @start="unlockScroll"></PartIntro>
-  </header>
+    <header>
+      <PartIntro></PartIntro>
+    </header>
 
-  <main id="main">
-    <div id="timeline-container-mobile">
-      <TimelineMobile></TimelineMobile>
-    </div>
+    <main id="main">
+      <div id="timeline-blur-wrapper">
+        <div id="timeline-blur"></div>
+      </div>
 
-    <div id="timeline-container">
-      <Timeline></Timeline>
-    </div>
+      <div id="timeline-container-mobile">
+        <div id="timeline-content-mobile">
+          <TimelineMobile></TimelineMobile>
+        </div>
+      </div>
 
-    <PartStats></PartStats>
-  </main>
+      <div id="timeline-container-desktop">
+        <div id="timeline-content">
+          <Timeline></Timeline>
+        </div>
+      </div>
 
-  <footer>
-    <PartOutro></PartOutro>
-  </footer>
+      <div id="section-content">
+        <PartStats></PartStats>
+      </div>
+    </main>
+
+    <footer>
+      <PartOutro></PartOutro>
+    </footer>
+  </div>
 </template>
 
 <style scoped>
-/* Frise */
-main {
-  display: flex;
-  position: relative;
-}
-
-/* FRISE PREMIER TEST */
-/* #timeline-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 10;
-  pointer-events: none;
-}
-
-#timeline-container {
-  height: auto;
+/* #website {
+  overflow: hidden;
 } */
 
-/* FRISE DEUXIEME TEST */
-#timeline-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 230px;
-  z-index: 10;
-  pointer-events: none;
+/* Contenu entier et position frise */
+#main {
+  position: relative;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-/* FRISE MOBILE */
+/* Timeline fond flou  */
+#timeline-blur-wrapper {
+  position: absolute;
+  height: 100%;
+}
+
+#timeline-blur {
+  position: sticky;
+  top: 0;
+  right: 0;
+
+  width: 230px;
+  height: 100vh;
+
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  z-index: 5;
+}
+
+/* Frise mobile */
 #timeline-container-mobile {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   left: 0;
-  z-index: 10;
+  z-index: 20;
   pointer-events: none;
+
+  width: 100%;
+  height: auto;
 
   display: none;
   opacity: 0;
   overflow: hidden;
 }
 
+#timeline-content-mobile {
+  width: max-content;
+}
+
+/* Frise desktop */
+#timeline-container-desktop {
+  width: 230px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  pointer-events: none;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  background: none;
+
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+}
+
+#timeline-content {
+  width: 100%;
+  height: auto;
+}
+
+#main #section-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Responsive */
 @media (max-width: 992px) {
+  #main {
+    flex-direction: column-reverse;
+  }
+
   #timeline-container-mobile {
     display: block;
     opacity: 1;
   }
 
-  #timeline-container {
+  #timeline-container-desktop {
+    display: none;
+    opacity: 0;
+  }
+
+  #timeline-blur-wrapper {
     display: none;
     opacity: 0;
   }

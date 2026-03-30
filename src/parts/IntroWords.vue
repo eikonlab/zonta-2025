@@ -1,39 +1,34 @@
 <script setup>
-// import { onMounted, nextTick } from 'vue'
-// import gsap from 'gsap'
-// import ScrollTrigger from 'gsap/ScrollTrigger'
+import gsap from 'gsap'
+import { onMounted, ref, watch } from 'vue'
 
-// gsap.registerPlugin(ScrollTrigger)
+const wordsList = ref(null)
 
-// onMounted(async () => {
-//   await nextTick()
+const props = defineProps({
+  state: Number,
+})
 
-//   const words = gsap.utils.toArray('#layout-all-words p')
+onMounted(() => {
+  wordsList.value = document.querySelectorAll('#intro-words p')
+  gsap.set(wordsList.value, {
+    opacity: 0,
+  })
+})
 
-//   // état initial → invisible
-//   gsap.set(words, {
-//     opacity: 0,
-//     x: -40,
-//   })
-
-//   // timeline liée à la section
-//   gsap
-//     .timeline({
-//       scrollTrigger: {
-//         trigger: '#intro-words',
-//         start: 'top 100%', // quand on ARRIVE sur la page 2
-//         end: 'middle 20%', // quand on QUITTE la page 2
-//         scrub: true, // lie au scroll → entrée + sortie auto
-//       },
-//     })
-//     .to(words, {
-//       opacity: 1,
-//       x: 0,
-//       stagger: 0.2,
-//       duration: 1,
-//       ease: 'power2.out',
-//     })
-// })
+watch(
+  () => props.state,
+  (newValue) => {
+    if (newValue === 2) {
+      console.log(props.state)
+      gsap.to(wordsList.value, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+        stagger: 0.3,
+      })
+    }
+  },
+)
 </script>
 
 <template>
@@ -91,6 +86,14 @@ p {
 /* Mise en page centrée des mots */
 #layout-all-words {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#layout-all-words .row {
+  margin: 0;
 }
 
 /* Mise en page mot Courage */
@@ -137,6 +140,29 @@ p {
 
   #word-solidarite {
     margin-top: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  p {
+    font-size: 40px;
+    padding: 24px;
+  }
+
+  #word-espoir {
+    margin-top: 45px;
+  }
+
+  #word-soutien {
+    margin-top: 55px;
+  }
+
+  #word-respect {
+    margin-top: 75px;
+  }
+
+  #word-solidarite {
+    margin-top: 10px;
   }
 }
 

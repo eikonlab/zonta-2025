@@ -4,7 +4,7 @@
   <div class="screen">
     <div>
       <div class="row">
-        <div class="col-lg-9 col-xl-10">
+        <div class="col-12">
           <div id="layout-page">
             <div id="layout-number">
               <p id="big-text">185</p>
@@ -57,10 +57,6 @@
   align-items: baseline;
 }
 
-#sentence-number-messages {
-  width: 210px;
-}
-
 /* Icones */
 em {
   position: relative;
@@ -83,6 +79,24 @@ img {
   right: -20px;
 }
 
+@media (max-width: 1253px) {
+  #icon-hand {
+    right: -40px;
+  }
+}
+
+@media (max-width: 1216px) {
+  #icon-heart {
+    top: -64px;
+    right: -20px;
+  }
+
+  #icon-hand {
+    bottom: -68px;
+    right: -40px;
+  }
+}
+
 @media (max-width: 1200px) {
   #layout-page {
     flex-direction: column;
@@ -91,6 +105,26 @@ img {
   #layout-support-sentance {
     margin-top: 50px;
     text-align: right;
+  }
+
+  #icon-heart {
+    top: -38px;
+    right: -20px;
+  }
+
+  #icon-hand {
+    bottom: -38px;
+    right: -20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .screen {
+    padding-left: 70px;
+  }
+
+  #sentence-number-messages {
+    width: 210px;
   }
 }
 
@@ -139,8 +173,8 @@ img {
 
 @media (max-width: 422px) {
   #icon-hand {
-    bottom: -38px;
-    right: -20px;
+    bottom: -68px;
+    right: 5px;
   }
 }
 </style>

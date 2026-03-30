@@ -8,13 +8,15 @@ defineProps({
 
 <template>
   <div class="timeline-item">
-    <div id="timeline-wrapper">
-      <div id="layout-line">
-        <p>{{ date }}</p>
-        <div id="big-line"></div>
+    <div class="timeline-wrapper">
+      <div class="layout-line">
+        <p class="date">{{ date }}</p>
+        <div class="big-line"></div>
       </div>
-      <p>{{ location }}</p>
-      <p id="strong-text">
+
+      <p class="location">{{ location }}</p>
+
+      <p class="age">
         <strong>{{ age }}</strong>
       </p>
     </div>
@@ -22,7 +24,7 @@ defineProps({
 </template>
 
 <style scoped>
-#timeline-wrapper {
+.timeline-wrapper {
   width: 210px;
 }
 
@@ -41,21 +43,32 @@ strong {
   line-height: 16px;
 }
 
-#strong-text {
-  margin-top: 4px;
+.age {
+  width: 190px;
 }
 
 /* Mise en page ligne */
-#layout-line {
+.layout-line {
   display: flex;
   align-items: center;
 }
 
-#big-line {
+.big-line {
   flex: 1;
   height: 1px;
   min-height: 1px;
   background-color: var(--color-orange);
   margin-left: 8px;
+}
+
+/* Animation apparition */
+.date,
+.location {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.age {
+  transform: translateY(-38px);
 }
 </style>

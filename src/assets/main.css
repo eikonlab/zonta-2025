@@ -2,13 +2,24 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   color: var(--color-blue);
   font-family: epilogue, sans-serif;
   background-color: var(--color-light-blue);
+  overflow-x: clip;
 }
+
+/* hide scrollbar */
+/* * {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+} */
 
 /* Pages */
 .screen {
@@ -20,11 +31,12 @@ body {
   color: var(--color-white);
 }
 
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .screen {
+    min-height: 100vh;
     height: auto;
   }
-}
+} */
 
 /* Fonts */
 

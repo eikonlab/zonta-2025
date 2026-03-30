@@ -4,19 +4,21 @@ import gsap from 'gsap'
 import messages from '@/data/messages-sapin-porte-paroles.json'
 
 // Messages et filtres
-// // catégorie par défaut
+// catégorie par défaut
 const activeCategory = ref('category-support')
 
-// // filtrage
+// filtrage
 const filteredMessages = computed(() => {
   return messages.filter((m) => m.category === activeCategory.value)
 })
 
-// // construction du texte et espacement
+// texte et espacement
 const streams = ref([])
 
 function buildMessageStream(messages) {
-  const base = messages.map((m) => `\u00A0\u00A0\u00A0${m.message}\u00A0\u00A0\u00A0`).join(' ✦ ')
+  const base = messages
+    .map((m) => `\u00A0\u00A0\u00A0\u00A0${m.message}\u00A0\u00A0\u00A0\u00A0`)
+    .join('  ')
   return base + ' ✦ ' + base
 }
 
@@ -288,30 +290,12 @@ function setFilter(category) {
   transform: scale(1.04);
 }
 
-/* liste des filtres dropdown */
-#filters-list {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-}
-
-/* boutons des filtres */
-#filters-list button {
-  margin-top: 5px;
-}
-
-/* active */
-#filters-list button.active {
-  color: var(--color-white);
-  border: 1.4px solid var(--color-orange);
-  background-color: var(--color-orange);
-}
-
 /* Style filtres */
 #filters {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 100px;
 }
 
 button {
@@ -354,13 +338,8 @@ button.active {
   justify-content: space-between;
 }
 
-#layout-title {
-  position: relative;
-}
-
 h2 {
   width: 427px;
-  position: absolute;
 }
 
 /* Mise en page de toute la page */
@@ -373,6 +352,7 @@ h2 {
   position: relative;
   height: 100%;
   pointer-events: none;
+  margin-left: -100px;
 }
 
 #tree-background-desktop {
@@ -434,12 +414,12 @@ text {
   }
 
   #text-bottom-left {
-    left: -300px;
+    left: -320px;
     bottom: 10px;
   }
 
   #text-bottom-right {
-    right: 0;
+    right: 50px;
     bottom: 30px;
   }
 }
@@ -460,17 +440,53 @@ text {
 
   #text-middle-right {
     top: 240px;
-    right: 230px;
+    right: 250px;
   }
 
   #text-bottom-left {
-    left: -300px;
+    left: -340px;
     bottom: 30px;
   }
 
   #text-bottom-right {
-    right: 200px;
+    right: 250px;
     bottom: 0;
+  }
+}
+
+@media (max-width: 1100px) {
+  #tree-container {
+    margin-left: -150px;
+  }
+
+  #text-top {
+    left: 90px;
+  }
+
+  #text-middle-left {
+    top: 130px;
+    left: -130px;
+  }
+
+  #text-middle-right {
+    top: 240px;
+    right: 280px;
+  }
+
+  #text-bottom-left {
+    left: -330px;
+    bottom: 30px;
+  }
+
+  #text-bottom-right {
+    right: 290px;
+    bottom: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .screen {
+    padding-left: 60px;
   }
 }
 
@@ -485,6 +501,11 @@ text {
     flex-wrap: wrap;
     gap: 0 12px;
     width: auto;
+    margin-bottom: 10px;
+  }
+
+  #tree-container {
+    margin-left: 0;
   }
 
   .screen {
@@ -492,22 +513,23 @@ text {
   }
 
   #text-top {
-    left: 120px;
+    left: 140px;
+    top: -60px;
   }
 
   #text-middle-left {
-    top: 130px;
-    left: -100px;
+    top: 100px;
+    left: -40px;
   }
 
   #text-middle-right {
-    top: 240px;
-    right: 130px;
+    top: 190px;
+    right: -20px;
   }
 
   #text-bottom-left {
-    left: -100px;
-    bottom: 70px;
+    left: -40px;
+    bottom: 90px;
   }
 
   #text-bottom-right {
@@ -518,6 +540,19 @@ text {
 }
 
 @media (max-width: 768px) {
+  .screen {
+    min-height: auto;
+  }
+
+  #filters-layout {
+    position: relative;
+  }
+
+  #filters {
+    position: absolute;
+    z-index: 10;
+  }
+
   #tree-background-desktop {
     display: none;
   }
@@ -528,19 +563,24 @@ text {
     height: auto;
   }
 
+  #text-top {
+    left: 150px;
+    top: 30px;
+  }
+
   #text-middle-left {
-    top: 130px;
+    top: 50px;
     left: -100px;
   }
 
   #text-middle-right {
-    top: 240px;
-    right: -70px;
+    top: 230px;
+    right: -67px;
   }
 
   #text-bottom-left {
     left: -70px;
-    bottom: 70px;
+    bottom: -50px;
   }
 
   text {
@@ -550,22 +590,24 @@ text {
 
 @media (max-width: 576px) {
   #text-top {
-    left: 40px;
+    left: 50px;
+    top: 30px;
   }
 
   #text-middle-left {
-    top: 130px;
-    left: -30px;
+    top: 80px;
+    left: -100px;
   }
 
   #text-middle-right {
-    top: 210px;
-    right: -70px;
+    top: 220px;
+    right: -60px;
   }
 
   #text-bottom-left {
-    left: -70px;
-    bottom: 70px;
+    overflow: hidden;
+    display: none;
+    opacity: 0;
   }
 }
 </style>

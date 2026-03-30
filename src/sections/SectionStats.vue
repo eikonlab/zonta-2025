@@ -3,6 +3,7 @@ import StatsStatistics from './../parts/StatsStatistics.vue'
 import StatsHighlightedMessage from './../parts/StatsHighlightedMessage.vue'
 import StatsRecurringMessages from './../parts/StatsRecurringMessages.vue'
 import StatsAllMessages from './../parts/StatsAllMessages.vue'
+import StatsScrollBg from './../parts/StatsScrollBg.vue'
 </script>
 
 <template>
@@ -22,6 +23,8 @@ import StatsAllMessages from './../parts/StatsAllMessages.vue'
     <div class="container">
       <StatsAllMessages></StatsAllMessages>
     </div>
+
+    <StatsScrollBg></StatsScrollBg>
   </div>
 </template>
 
