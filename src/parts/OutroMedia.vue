@@ -108,6 +108,12 @@ img {
   }
 }
 
+@media (max-width: 992px) {
+  .screen {
+    height: auto !important;
+  }
+}
+
 @media (max-width: 576px) {
   img {
     max-width: 100%;
