@@ -4,6 +4,8 @@ import { onMounted, ref } from 'vue'
 
 const ScrollerRef = ref(null)
 const scrollPosition = ref(0)
+const emit = defineEmits(['jumpToStats'])
+const blockScroll = ref(false)
 
 const handleScroll = () => {
   if (ScrollerRef.value) {
@@ -12,6 +14,10 @@ const handleScroll = () => {
       (scroller.scrollTop / (scroller.scrollHeight - scroller.clientHeight)) * 100
     scrollPosition.value = scrollPercentage
     console.log('Scroll position:', scrollPosition.value + '%')
+    if (scrollPercentage >= 99 && !blockScroll.value) {
+      emit('jumpToStats')
+      blockScroll.value = true
+    }
   }
 }
 
@@ -46,6 +52,11 @@ onMounted(() => {
   height: 100vh;
   width: 100%;
   overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+#scroller::-webkit-scrollbar {
+  display: none;
 }
 
 #button-parent {

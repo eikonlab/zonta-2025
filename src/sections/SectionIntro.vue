@@ -18,8 +18,27 @@ const skipWordsDelay = 2000
 const skipTextDelay = 2000
 const tutorialDelay = 2000
 
+const preventScroll = (e) => e.preventDefault()
+
 // reactive state
 let state = ref(1)
+const introDiv = ref(null)
+const html = document.documentElement
+
+function HandleJumpToStats() {
+  document.getElementById('burger-recapitulatif').scrollIntoView({ behavior: 'smooth' })
+  setTimeout(() => {
+    introDiv.value.style.display = 'none'
+    window.scrollTo({
+      top: 0,
+      behavior: 'instant',
+    })
+  }, 1000)
+  setTimeout(() => {
+    html.style.overflowY = 'auto'
+  }, 1500)
+  console.log('Jump to stats section')
+}
 
 function HandleStart() {
   window.scrollTo({
@@ -45,15 +64,12 @@ function HandleStart() {
 
     state.value = 4
 
-    setTimeout(() => {
-      // window.addEventListener('wheel', (e) => e, { passive: true })
-    }, tutorialDelay)
+    setTimeout(() => {}, tutorialDelay)
   }, skipTextDelay + skipWordsDelay)
 }
 
 onMounted(() => {
-  // bloque scroll au début
-  // window.addEventListener('wheel', (e) => e.preventDefault(), { passive: false })
+  html.style.overflowY = 'hidden'
 
   gsapContainers.value = document.querySelectorAll('.gsap-container')
 
@@ -78,7 +94,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="burger-accueil" class="burger-orange">
+  <div id="burger-accueil" class="burger-orange" ref="introDiv">
     <IntroMovingBg :state="state"></IntroMovingBg>
 
     <div class="container">
@@ -95,7 +111,7 @@ onMounted(() => {
 
     <div class="gsap-container">
       <div id="desktop-version">
-        <IntroScroll></IntroScroll>
+        <IntroScroll @jumpToStats="HandleJumpToStats"></IntroScroll>
       </div>
     </div>
   </div>
