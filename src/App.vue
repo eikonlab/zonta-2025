@@ -7,7 +7,7 @@ import BurgerMenu from './components/BurgerMenu.vue'
 import Timeline from './components/Timeline.vue'
 import TimelineMobile from './components/TimelineMobile.vue'
 
-import { onMounted } from 'vue'
+import { onMounted, onBeforeUnmount } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -85,37 +85,65 @@ onMounted(() => {
 
 //       const date = item.querySelector('.date')
 //       const location = item.querySelector('.location')
+//       const age = item.querySelector('.age')
+//       const line = item.querySelector('.big-line')
 
-//       if (!date || !location) return
+//       if (!date || !location || !age || !line) return
 
-//       // 🔥 distance au centre
 //       const itemCenter = rect.top + rect.height / 2
-//       const distance = Math.abs(viewportCenter - itemCenter)
 
-//       // 🔥 zone active (à ajuster)
-//       const threshold = 200
+//       const start = window.innerHeight * 0.35
+//       const end = window.innerHeight * 0.65
 
-//       if (distance < threshold) {
-//         // visible → on montre
+//       const isActive = itemCenter > start && itemCenter < end
+
+//       if (item._active === isActive) return
+//       item._active = isActive
+
+//       if (isActive) {
 //         gsap.to([date, location], {
 //           opacity: 1,
 //           y: 0,
 //           duration: 0.3,
-//           overwrite: true,
+//           ease: 'power2.out',
+//         })
+
+//         gsap.to(age, {
+//           y: 0,
+//           duration: 0.3,
+//           ease: 'power2.out',
+//         })
+
+//         gsap.to(line, {
+//           scaleX: 1,
+//           x: 0,
+//           duration: 0.3,
+//           ease: 'power2.out',
 //         })
 //       } else {
-//         // hors centre → on cache
 //         gsap.to([date, location], {
 //           opacity: 0,
 //           y: 10,
 //           duration: 0.3,
-//           overwrite: true,
+//           ease: 'power2.in',
+//         })
+
+//         gsap.to(age, {
+//           y: -10,
+//           duration: 0.3,
+//           ease: 'power2.in',
+//         })
+
+//         gsap.to(line, {
+//           scaleX: 0.3,
+//           x: 140,
+//           duration: 0.3,
+//           ease: 'power2.in',
 //         })
 //       }
 //     })
 //   }
 
-//   // 🔥 sync avec GSAP scroll
 //   gsap.ticker.add(updateItems)
 
 //   // cleanup (important en Vue)
@@ -125,19 +153,21 @@ onMounted(() => {
 // })
 
 onMounted(() => {
-  const items = document.querySelectorAll('.timeline-item')
+  const items = gsap.utils.toArray('.timeline-item')
 
   function updateItems() {
     items.forEach((item) => {
       const rect = item.getBoundingClientRect()
-      const viewportCenter = window.innerHeight / 2
+      // const viewportCenter = window.innerHeight / 2
 
       const date = item.querySelector('.date')
       const location = item.querySelector('.location')
       const age = item.querySelector('.age')
       const line = item.querySelector('.big-line')
+      const ageLine = item.querySelector('.age-line')
+      const ageWrapper = item.querySelector('.layout-line-age')
 
-      if (!date || !location || !age || !line) return
+      if (!date || !location || !age || !line || !ageLine || !ageWrapper) return
 
       const itemCenter = rect.top + rect.height / 2
 
@@ -146,62 +176,86 @@ onMounted(() => {
 
       const isActive = itemCenter > start && itemCenter < end
 
-      // 🔥 éviter de relancer l’anim en boucle
       if (item._active === isActive) return
       item._active = isActive
 
       if (isActive) {
-        // 🟢 ÉTAT ACTIF
+        // État actif
         gsap.to([date, location], {
           opacity: 1,
           y: 0,
           duration: 0.3,
           ease: 'power2.out',
-        })
-
-        gsap.to(age, {
-          y: 0,
-          duration: 0.3,
-          ease: 'power2.out',
+          overwrite: 'auto',
         })
 
         gsap.to(line, {
-          scaleX: 1,
+          opacity: 1,
           x: 0,
           duration: 0.3,
           ease: 'power2.out',
+          overwrite: 'auto',
+        })
+
+        gsap.to(ageLine, {
+          opacity: 0,
+          x: 140,
+          duration: 0.2,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        })
+
+        gsap.to(ageWrapper, {
+          y: 0,
+          duration: 0.3,
+          ease: 'power2.out',
+          overwrite: 'auto',
         })
       } else {
-        // 🔴 ÉTAT COMPACT
+        // État initial
         gsap.to([date, location], {
           opacity: 0,
           y: 10,
           duration: 0.3,
           ease: 'power2.in',
-        })
-
-        gsap.to(age, {
-          y: -10,
-          duration: 0.3,
-          ease: 'power2.in',
+          overwrite: 'auto',
         })
 
         gsap.to(line, {
-          scaleX: 0.3,
-          x: 130, // 🔥 ton besoin ici
+          opacity: 0,
+          x: 140,
           duration: 0.3,
           ease: 'power2.in',
+          overwrite: 'auto',
+          pointerEvents: 'none',
+        })
+
+        gsap.to(ageLine, {
+          opacity: 1,
+          x: 0,
+          duration: 0.2,
+          overwrite: 'auto',
+        })
+
+        gsap.to(ageWrapper, {
+          y: -38,
+          duration: 0.3,
+          ease: 'power2.in',
+          overwrite: 'auto',
         })
       }
     })
   }
 
-  // 🔥 sync avec GSAP scroll
-  gsap.ticker.add(updateItems)
+  ScrollTrigger.create({
+    trigger: '#main',
+    start: 'top bottom',
+    end: 'bottom top',
+    onUpdate: updateItems,
+  })
 
-  // cleanup (important en Vue)
-  onBeforeUnmount(() => {
-    gsap.ticker.remove(updateItems)
+  window.addEventListener('resize', () => {
+    ScrollTrigger.refresh()
   })
 })
 </script>

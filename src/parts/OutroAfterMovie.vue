@@ -2,14 +2,10 @@
 
 <template>
   <div class="screen">
-    <div>
-      <div class="row">
-        <div class="col-12 col-lg-2" id="layout-margin">
-          <h3>Retour en image</h3>
-        </div>
-        <div class="col-12 col-lg-8">
-          <div class="video"></div>
-        </div>
+    <div class="row-container">
+      <div class="video-container">
+        <h3>Retour en image</h3>
+        <video src="/public/Zonta-aftermovie-web.mp4" controls></video>
       </div>
     </div>
   </div>
@@ -17,25 +13,46 @@
 
 <style scoped>
 .screen {
-  padding-top: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 60px 0;
 }
 
 /* Font */
 h3 {
   color: var(--color-white);
   text-align: end;
+  width: auto;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.row-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.video-container {
+  display: flex;
+  flex-flow: row nowrap;
+  max-width: 100%;
+  max-height: 100%;
+  gap: 20px;
 }
 
 /* Style vidéo */
-.video {
-  width: 100%;
-  aspect-ratio: 5 / 4;
+video {
+  flex: 1;
+  min-width: 0;
+  max-height: 100%;
+  object-fit: cover;
   background-color: var(--color-white);
-}
-
-/* Mise en page */
-#layout-margin {
-  padding: 8px 0;
 }
 
 /* Responsive */
@@ -49,8 +66,17 @@ h3 {
     line-height: 25px;
   }
 
-  #layout-margin {
-    padding: 12px 12px 0;
+  video {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    background-color: var(--color-white);
+  }
+
+  .video-container {
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    max-width: 100%;
   }
 }
 </style>

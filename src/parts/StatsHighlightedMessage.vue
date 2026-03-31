@@ -1,7 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import gsap from 'gsap'
 import messages from '@/data/highlighted-messages.json'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const currentIndex = ref(0)
 const currentMessage = ref(messages[0])
@@ -84,14 +87,53 @@ onMounted(() => {
     .set('#date', { y: -30 })
     .set('#name', { y: 30 })
 })
+
+// Apparition disparition
+const section = ref(null)
+let ctx
+
+onMounted(() => {
+  ctx = gsap.context(() => {
+    const sentence = section.value.querySelector('#layout-message')
+    const title = section.value.querySelector('#layout-title')
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section.value,
+        start: 'center 80%',
+        end: () => `+=${window.innerHeight * 0.6}`,
+        toggleActions: 'play reverse play reverse',
+      },
+    })
+
+    tl.from(title, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
+    })
+
+    tl.from(sentence, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
+      delay: 0.2,
+    })
+  })
+})
+
+onBeforeUnmount(() => ctx?.revert())
 </script>
 
 <template>
   <div class="screen">
-    <div>
-      <h3>Message mis en avant</h3>
+    <div ref="section">
       <div class="row">
         <div class="col-12">
+          <div id="layout-title">
+            <h3>Message mis en avant</h3>
+          </div>
           <div id="layout-message">
             <div id="quote-block">
               <p class="informations" id="date">{{ currentMessage.date }}</p>
@@ -110,6 +152,10 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+h3 {
+  margin-bottom: 20px;
 }
 
 /* Style texte informations  */

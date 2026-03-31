@@ -1,8 +1,50 @@
-<script setup></script>
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const section = ref(null)
+let ctx
+
+onMounted(() => {
+  ctx = gsap.context(() => {
+    const number = section.value.querySelector('#layout-number')
+    const sentence = section.value.querySelector('#layout-support-sentence')
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section.value,
+        start: 'center 80%',
+        end: () => `+=${window.innerHeight * 0.6}`,
+        toggleActions: 'play reverse play reverse',
+      },
+    })
+
+    tl.from(number, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
+    })
+
+    tl.from(sentence, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
+      delay: 0.2,
+    })
+  })
+})
+
+onBeforeUnmount(() => ctx?.revert())
+</script>
 
 <template>
   <div class="screen">
-    <div>
+    <div ref="section">
       <div class="row">
         <div class="col-12">
           <div id="layout-page">
@@ -10,7 +52,7 @@
               <p id="big-text">185</p>
               <p id="sentence-number-messages">Messages <em>récoltés</em></p>
             </div>
-            <div id="layout-support-sentance">
+            <div id="layout-support-sentence">
               <p>
                 Tant de messages
                 <em
@@ -102,7 +144,7 @@ img {
     flex-direction: column;
   }
 
-  #layout-support-sentance {
+  #layout-support-sentence {
     margin-top: 50px;
     text-align: right;
   }
@@ -159,7 +201,7 @@ img {
     right: -20px;
   }
 
-  #layout-support-sentance {
+  #layout-support-sentence {
     padding-left: 40px;
   }
 }

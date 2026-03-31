@@ -212,6 +212,7 @@ ul {
   top: 0;
   right: 0;
   z-index: 20;
+  pointer-events: none;
 }
 
 /* Bouton de l'icone du burger */
@@ -222,6 +223,7 @@ ul {
   right: 16px;
 
   transition: transform 0.2s ease;
+  pointer-events: all;
 }
 
 .burger:hover {

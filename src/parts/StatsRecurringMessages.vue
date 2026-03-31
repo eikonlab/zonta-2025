@@ -1,9 +1,79 @@
-<script setup></script>
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const section = ref(null)
+let ctx
+
+onMounted(() => {
+  ctx = gsap.context(() => {
+    const together = section.value.querySelector('#layout-sentence-top')
+    const violence = section.value.querySelector('#sentence-violence')
+    const believe = section.value.querySelector('#sentence-believe')
+    const report = section.value.querySelector('#sentence-report')
+    const title = section.value.querySelector('#layout-title')
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section.value,
+        start: 'center 80%',
+        toggleActions: 'play reverse play reverse',
+      },
+    })
+
+    tl.from(title, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
+    })
+
+    tl.from(together, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
+    })
+
+    tl.from(violence, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
+    })
+
+    tl.from(believe, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
+    })
+
+    tl.from(report, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
+    })
+  })
+})
+
+onBeforeUnmount(() => ctx?.revert())
+</script>
 
 <template>
   <div class="screen">
-    <div>
-      <h3>Messages les plus récurrents</h3>
+    <div ref="section">
+      <div class="row">
+        <div class="col-12">
+          <div id="layout-title">
+            <h3>Messages les plus récurrents</h3>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-12">
           <div id="layout-sentence-top">
@@ -51,6 +121,14 @@
   padding-top: 6%;
 }
 
+#layout-title {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 30px;
+  margin-left: 40px;
+}
+
 /* Fonts */
 .small-text {
   font-family: arima, sans-serif;
@@ -73,7 +151,7 @@
 #layout-sentence-top {
   display: flex;
   justify-content: center;
-  margin-bottom: 120px;
+  margin-bottom: 80px;
 }
 
 #layout-sentences {
@@ -120,7 +198,19 @@
 
 @media (max-width: 992px) {
   #sentence-violence {
-    margin-bottom: 100px;
+    margin-bottom: 20px;
+  }
+
+  #layout-sentence-top {
+    margin-bottom: 60px;
+  }
+
+  #layout-title {
+    justify-content: flex-end;
+  }
+
+  h3 {
+    text-align: end;
   }
 }
 
@@ -147,6 +237,10 @@
 }
 
 @media (max-width: 768px) {
+  h3 {
+    max-width: 200px;
+  }
+
   .small-text {
     font-size: 16px;
     line-height: 16px;
@@ -160,8 +254,13 @@
 }
 
 @media (max-width: 576px) {
+  h3 {
+    max-width: 150px;
+  }
+
   #layout-sentence-top {
     margin-right: 40px;
+    margin-top: 20px;
     justify-content: flex-end;
   }
 }

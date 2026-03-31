@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+defineProps({
+  scrollValue: Number,
+})
+</script>
 
 <template>
   <div id="button-wrapper">
@@ -15,7 +19,9 @@
       <circle class="wheel" cx="35.9961" cy="31.5666" r="1.78317" />
     </svg>
     <p>Scrollez pour Explorer</p>
-    <div id="line"></div>
+    <div id="line">
+      <div id="line-highlight" :style="{ height: scrollValue + '%' }"></div>
+    </div>
   </div>
 </template>
 
@@ -33,7 +39,17 @@ p {
 #line {
   width: 1.4px;
   height: 317px;
-  opacity: 0.2;
+  background-color: #ffffff20;
+  position: relative;
+}
+
+#line-highlight {
+  position: absolute;
+  opacity: 1;
+  width: 1.4px;
+  top: 0;
+  height: 10%;
+  z-index: 2;
   background-color: var(--color-white);
 }
 

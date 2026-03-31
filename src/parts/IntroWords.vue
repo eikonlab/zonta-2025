@@ -90,6 +90,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 1;
 }
 
 #layout-all-words .row {

@@ -9,7 +9,7 @@ const heroContainer = ref(null)
 let ctx // ← manquant
 
 onMounted(() => {
-  const isMobile = window.innerWidth < 600
+  const isMobile = window.innerWidth < 576
 
   const values = isMobile
     ? {
@@ -41,6 +41,7 @@ onMounted(() => {
         end: 'bottom-=33% top',
         scrub: 2,
         // markers: true,
+        // invalidateOnRefresh: true,
       },
     })
 
@@ -48,12 +49,14 @@ onMounted(() => {
     tl.to(heroImg.value, {
       x: values.midX,
       y: values.midY,
+      ease: 'power3.inOut',
     })
 
     // 2ème moitié du scroll → point B
     tl.to(heroImg.value, {
       x: values.endX,
       y: values.endY,
+      ease: 'power3.inOut',
     })
   })
 })

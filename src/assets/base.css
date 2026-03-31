@@ -5,3 +5,8 @@
   --color-orange: #f97706;
   --color-blue: #255791;
 }
+
+::selection {
+  background-color: #255791a7;
+  color: var(--color-white);
+}

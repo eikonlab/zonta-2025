@@ -8,6 +8,7 @@ const introContainer = ref(null)
 const bgContainerRef = ref(null)
 let ctx = ref(null)
 const bgImgLast = ref(null)
+const bgImgLastOrange = ref(null)
 let imageWidth
 
 const props = defineProps({
@@ -50,6 +51,10 @@ watch(
         scale: 1.2,
         duration: 0.5,
       })
+      gsap.to(bgImgLastOrange.value, {
+        scale: 1.2,
+        duration: 0.5,
+      })
     }
   },
 )
@@ -62,7 +67,9 @@ onUnmounted(() => ctx.value.revert())
     <div ref="bgContainerRef" class="bg-container">
       <img class="bg-img" src="/bg-p1.svg" alt="" />
       <img class="bg-img-2" src="/bg-p2.svg" alt="" />
-      <img ref="bgImgLast" class="bg-img-3" src="/bg-p3.svg" alt="" />
+      <!-- <div></div> -->
+      <img ref="bgImgLast" class="bg-img-3" src="/bg-p3-v2.svg" alt="" />
+      <img ref="bgImgLastOrange" class="bg-img-3-orange" src="/bg-p3-v2-orange.svg" alt="" />
     </div>
   </div>
   <div class="mobile-bg-container">
@@ -84,7 +91,7 @@ onUnmounted(() => ctx.value.revert())
   position: sticky;
   top: 0;
   bottom: 0;
-  z-index: 0;
+  /* z-index: inherit; */
   height: 100vh;
   display: flex;
   flex-flow: row nowrap;
@@ -98,7 +105,7 @@ onUnmounted(() => ctx.value.revert())
   left: 0;
   overflow: clip;
   /* overflow: hidden; */
-  z-index: 0;
+  /* z-index: 0; */
   width: 100%;
   height: 400vh;
   pointer-events: none;
@@ -114,7 +121,8 @@ onUnmounted(() => ctx.value.revert())
 
 .bg-img,
 .bg-img-2,
-.bg-img-3 {
+.bg-img-3,
+.bg-img-3-orange {
   position: absolute;
   left: 50%;
   min-width: 100vw;
@@ -133,10 +141,16 @@ onUnmounted(() => ctx.value.revert())
   transform: translate(150%, 0);
 }
 
+.bg-img-3-orange {
+  z-index: 2;
+  transform: translate(150%, 0);
+}
+
 @media (max-aspect-ratio: 19/9) {
   .bg-img,
   .bg-img-2,
-  .bg-img-3 {
+  .bg-img-3,
+  .bg-img-3-orange {
     height: 100vh;
     min-width: none;
   }
@@ -154,7 +168,8 @@ onUnmounted(() => ctx.value.revert())
 
   .bg-img,
   .bg-img-2,
-  .bg-img-3 {
+  .bg-img-3,
+  .bg-img-3-orange {
     display: block;
   }
 }

@@ -39,6 +39,10 @@
   margin-top: 100px;
 }
 
+.screen div {
+  z-index: 1;
+}
+
 /* Position image */
 img {
   max-width: 413px;
