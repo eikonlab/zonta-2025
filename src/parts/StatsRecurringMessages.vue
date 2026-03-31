@@ -73,7 +73,7 @@
 #layout-sentence-top {
   display: flex;
   justify-content: center;
-  margin-bottom: 120px;
+  margin-bottom: 80px;
 }
 
 #layout-sentences {
@@ -118,9 +118,23 @@
   }
 }
 
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   #sentence-violence {
     margin-bottom: 100px;
+  }
+
+  .big-text {
+    color: red;
+  }
+} */
+
+@media (max-width: 992px) {
+  #sentence-violence {
+    margin-bottom: 20px;
+  }
+
+  #layout-sentence-top {
+    margin-bottom: 60px;
   }
 }
 
@@ -162,6 +176,7 @@
 @media (max-width: 576px) {
   #layout-sentence-top {
     margin-right: 40px;
+    margin-top: 20px;
     justify-content: flex-end;
   }
 }
