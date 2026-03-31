@@ -14,6 +14,7 @@ onMounted(() => {
     const violence = section.value.querySelector('#sentence-violence')
     const believe = section.value.querySelector('#sentence-believe')
     const report = section.value.querySelector('#sentence-report')
+    const title = section.value.querySelector('#layout-title')
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -21,6 +22,13 @@ onMounted(() => {
         start: 'center 80%',
         toggleActions: 'play reverse play reverse',
       },
+    })
+
+    tl.from(title, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
     })
 
     tl.from(together, {
@@ -59,7 +67,13 @@ onBeforeUnmount(() => ctx?.revert())
 <template>
   <div class="screen">
     <div ref="section">
-      <h3>Messages les plus récurrents</h3>
+      <div class="row">
+        <div class="col-12">
+          <div id="layout-title">
+            <h3>Messages les plus récurrents</h3>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-12">
           <div id="layout-sentence-top">
@@ -105,6 +119,14 @@ onBeforeUnmount(() => ctx?.revert())
 <style scoped>
 .screen {
   padding-top: 6%;
+}
+
+#layout-title {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 30px;
+  margin-left: 40px;
 }
 
 /* Fonts */
@@ -174,16 +196,6 @@ onBeforeUnmount(() => ctx?.revert())
   }
 }
 
-/* @media (max-width: 992px) {
-  #sentence-violence {
-    margin-bottom: 100px;
-  }
-
-  .big-text {
-    color: red;
-  }
-} */
-
 @media (max-width: 992px) {
   #sentence-violence {
     margin-bottom: 20px;
@@ -191,6 +203,14 @@ onBeforeUnmount(() => ctx?.revert())
 
   #layout-sentence-top {
     margin-bottom: 60px;
+  }
+
+  #layout-title {
+    justify-content: flex-end;
+  }
+
+  h3 {
+    text-align: end;
   }
 }
 
@@ -217,6 +237,10 @@ onBeforeUnmount(() => ctx?.revert())
 }
 
 @media (max-width: 768px) {
+  h3 {
+    max-width: 200px;
+  }
+
   .small-text {
     font-size: 16px;
     line-height: 16px;
@@ -230,6 +254,10 @@ onBeforeUnmount(() => ctx?.revert())
 }
 
 @media (max-width: 576px) {
+  h3 {
+    max-width: 150px;
+  }
+
   #layout-sentence-top {
     margin-right: 40px;
     margin-top: 20px;

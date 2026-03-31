@@ -95,6 +95,7 @@ let ctx
 onMounted(() => {
   ctx = gsap.context(() => {
     const sentence = section.value.querySelector('#layout-message')
+    const title = section.value.querySelector('#layout-title')
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -103,6 +104,13 @@ onMounted(() => {
         end: () => `+=${window.innerHeight * 0.6}`,
         toggleActions: 'play reverse play reverse',
       },
+    })
+
+    tl.from(title, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: 'power2.out',
     })
 
     tl.from(sentence, {
@@ -121,9 +129,11 @@ onBeforeUnmount(() => ctx?.revert())
 <template>
   <div class="screen">
     <div ref="section">
-      <h3>Message mis en avant</h3>
       <div class="row">
         <div class="col-12">
+          <div id="layout-title">
+            <h3>Message mis en avant</h3>
+          </div>
           <div id="layout-message">
             <div id="quote-block">
               <p class="informations" id="date">{{ currentMessage.date }}</p>
@@ -142,6 +152,10 @@ onBeforeUnmount(() => ctx?.revert())
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+h3 {
+  margin-bottom: 20px;
 }
 
 /* Style texte informations  */
