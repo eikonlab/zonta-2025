@@ -214,7 +214,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
 
 <style scoped>
 #timeline-wrapper {
-  background: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.932);
   height: 100px;
   padding-top: 10px;
   padding-left: 18px;
