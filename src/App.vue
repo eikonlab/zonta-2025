@@ -7,7 +7,7 @@ import BurgerMenu from './components/BurgerMenu.vue'
 import Timeline from './components/Timeline.vue'
 import TimelineMobile from './components/TimelineMobile.vue'
 
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onMounted } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -74,91 +74,14 @@ onMounted(() => {
   })
 })
 
-// Animmation apparition texte
-// onMounted(() => {
-//   const items = document.querySelectorAll('.timeline-item')
-
-//   function updateItems() {
-//     items.forEach((item) => {
-//       const rect = item.getBoundingClientRect()
-//       const viewportCenter = window.innerHeight / 2
-
-//       const date = item.querySelector('.date')
-//       const location = item.querySelector('.location')
-//       const age = item.querySelector('.age')
-//       const line = item.querySelector('.big-line')
-
-//       if (!date || !location || !age || !line) return
-
-//       const itemCenter = rect.top + rect.height / 2
-
-//       const start = window.innerHeight * 0.35
-//       const end = window.innerHeight * 0.65
-
-//       const isActive = itemCenter > start && itemCenter < end
-
-//       if (item._active === isActive) return
-//       item._active = isActive
-
-//       if (isActive) {
-//         gsap.to([date, location], {
-//           opacity: 1,
-//           y: 0,
-//           duration: 0.3,
-//           ease: 'power2.out',
-//         })
-
-//         gsap.to(age, {
-//           y: 0,
-//           duration: 0.3,
-//           ease: 'power2.out',
-//         })
-
-//         gsap.to(line, {
-//           scaleX: 1,
-//           x: 0,
-//           duration: 0.3,
-//           ease: 'power2.out',
-//         })
-//       } else {
-//         gsap.to([date, location], {
-//           opacity: 0,
-//           y: 10,
-//           duration: 0.3,
-//           ease: 'power2.in',
-//         })
-
-//         gsap.to(age, {
-//           y: -10,
-//           duration: 0.3,
-//           ease: 'power2.in',
-//         })
-
-//         gsap.to(line, {
-//           scaleX: 0.3,
-//           x: 140,
-//           duration: 0.3,
-//           ease: 'power2.in',
-//         })
-//       }
-//     })
-//   }
-
-//   gsap.ticker.add(updateItems)
-
-//   // cleanup (important en Vue)
-//   onBeforeUnmount(() => {
-//     gsap.ticker.remove(updateItems)
-//   })
-// })
-
+// Animation apparition texte
 onMounted(() => {
   const items = gsap.utils.toArray('.timeline-item')
 
   function updateItems() {
     items.forEach((item) => {
       const rect = item.getBoundingClientRect()
-      // const viewportCenter = window.innerHeight / 2
+      const viewportCenter = window.innerHeight / 2
 
       const date = item.querySelector('.date')
       const location = item.querySelector('.location')
@@ -197,6 +120,13 @@ onMounted(() => {
           overwrite: 'auto',
         })
 
+        gsap.to(age, {
+          scale: 1,
+          duration: 0.2,
+          ease: 'power2.in',
+          overwrite: 'auto',
+        })
+
         gsap.to(ageLine, {
           opacity: 0,
           x: 140,
@@ -228,6 +158,13 @@ onMounted(() => {
           ease: 'power2.in',
           overwrite: 'auto',
           pointerEvents: 'none',
+        })
+
+        gsap.to(age, {
+          scale: 0.9,
+          duration: 0.2,
+          ease: 'power2.in',
+          overwrite: 'auto',
         })
 
         gsap.to(ageLine, {

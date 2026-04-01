@@ -16,10 +16,6 @@ defineProps({
 
       <p class="location">{{ location }}</p>
 
-      <!-- <p class="age">
-        <strong>{{ age }}</strong>
-      </p> -->
-
       <div class="layout-line-age">
         <p class="age">
           <strong>{{ age }}</strong>
@@ -76,22 +72,10 @@ strong {
 }
 
 /* Animation apparition */
-/* .date,
-.location {
-  opacity: 0;
-  transform: translateY(5px);
-}
-
-.age {
-  transform: translateY(-38px);
-} */
-
-/* Animation apparition v2 */
-
 /* État initial */
 
 .age-line {
-  width: 16px;
+  width: 26px;
   height: 1px;
   min-height: 1px;
   background-color: var(--color-orange);
@@ -100,6 +84,10 @@ strong {
   transform-origin: left;
 
   opacity: 1;
+}
+
+.age {
+  transform: scale(0.9);
 }
 
 .date,
