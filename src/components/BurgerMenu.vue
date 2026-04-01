@@ -1,9 +1,18 @@
 <script setup>
-import { onMounted, nextTick } from 'vue'
+import { onMounted, nextTick, inject, watch } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const isIntroDone = inject('isIntroDone')
+
+watch(isIntroDone, (newVal) => {
+  if (newVal) {
+    const circle = document.querySelector('.circle')
+    circle.classList.remove('alt-burger')
+  }
+})
 
 // Interactivité bouton burger
 onMounted(() => {
@@ -81,6 +90,8 @@ onMounted(async () => {
       start: 'top top',
       end: 'bottom top',
 
+      markers: true,
+
       onEnter: () => updateBurger(section),
       onEnterBack: () => updateBurger(section),
     })
@@ -104,7 +115,7 @@ onMounted(async () => {
 <template>
   <div class="burger-menu">
     <div class="burger">
-      <div class="circle">
+      <div class="circle alt-burger">
         <div class="bar-icon">
           <div class="bar bar-top"></div>
           <div class="bar bar-middle"></div>

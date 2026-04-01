@@ -7,12 +7,19 @@ import BurgerMenu from './components/BurgerMenu.vue'
 import Timeline from './components/Timeline.vue'
 import TimelineMobile from './components/TimelineMobile.vue'
 
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onMounted, ref, provide } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
 // Frise
 gsap.registerPlugin(ScrollTrigger)
+
+const isIntroDone = ref(false)
+const setIntroDDone = (val) => {
+  isIntroDone.value = val
+}
+provide('isIntroDone', isIntroDone)
+provide('setIntroDone', setIntroDDone)
 
 onMounted(() => {
   const mm = gsap.matchMedia()

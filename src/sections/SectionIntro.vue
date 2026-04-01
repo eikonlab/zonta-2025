@@ -5,7 +5,7 @@ import IntroText from './../parts/IntroText.vue'
 import IntroScroll from './../parts/IntroScroll.vue'
 import IntroMovingBg from './../parts/IntroMovingBg.vue'
 
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, inject } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -25,9 +25,13 @@ let state = ref(1)
 const introDiv = ref(null)
 const html = document.documentElement
 const isDev = ref(true)
+const setIntroDone = inject('setIntroDone')
 
 function HandleJumpToStats() {
   document.getElementById('burger-recapitulatif').scrollIntoView({ behavior: 'smooth' })
+  setTimeout(() => {
+    setIntroDone(true)
+  }, 500)
   setTimeout(() => {
     introDiv.value.style.display = 'none'
     window.scrollTo({
@@ -36,6 +40,7 @@ function HandleJumpToStats() {
     })
   }, 1000)
   setTimeout(() => {
+    ScrollTrigger.refresh()
     html.style.overflowY = 'auto'
   }, 1500)
   console.log('Jump to stats section')
@@ -105,7 +110,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="burger-accueil" class="burger-orange" ref="introDiv">
+  <div id="burger-accueil" class="intro-orange" ref="introDiv">
     <IntroMovingBg :state="state"></IntroMovingBg>
 
     <div class="container">
