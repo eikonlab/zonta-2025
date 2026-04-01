@@ -33,11 +33,11 @@ function HandleJumpToStats() {
     setIntroDone(true)
   }, 500)
   setTimeout(() => {
-    introDiv.value.style.display = 'none'
-    window.scrollTo({
-      top: 0,
-      behavior: 'instant',
-    })
+    // introDiv.value.style.display = 'none'
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: 'instant',
+    // })
   }, 1000)
   setTimeout(() => {
     ScrollTrigger.refresh()
