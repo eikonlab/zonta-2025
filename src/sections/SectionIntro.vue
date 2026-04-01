@@ -110,7 +110,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="burger-accueil" class="intro-orange" ref="introDiv">
+  <div id="burger-accueil" class="burger-orange" ref="introDiv">
     <IntroMovingBg :state="state"></IntroMovingBg>
 
     <div class="container">
