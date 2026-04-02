@@ -77,10 +77,8 @@ p {
   font-size: 68px;
   font-weight: 600;
 
-  background-color: var(--color-light-orange);
   display: inline-block;
   padding: 30px;
-  border-radius: 100px;
 }
 
 /* Mise en page centrée des mots */

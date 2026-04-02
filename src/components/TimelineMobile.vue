@@ -95,7 +95,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
     <TimelineMobileLine></TimelineMobileLine>
     <TimelineMobileText
       date="10 avril"
-      location="Epagny, Fribourg"
+      location="Epagny, Fribourg."
       age="Son âge n'est pas connu."
     ></TimelineMobileText>
     <TimelineMobileLine></TimelineMobileLine>
@@ -125,7 +125,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
     <TimelineMobileText
       date="17 juin"
       location="Egerkingen, Soleure."
-      age="L'âge des deux femmes n'est pas connu"
+      age="L'âge des deux femmes n'est pas connu."
     ></TimelineMobileText>
     <TimelineMobileLine></TimelineMobileLine>
     <TimelineMobileLine></TimelineMobileLine>
@@ -178,7 +178,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
     <TimelineMobileLine></TimelineMobileLine>
     <TimelineMobileText
       date="15 septembre"
-      location="Wettswil am Albis, Zürich"
+      location="Wettswil am Albis, Zürich."
       age="Elle aurait eu 78 ans."
     ></TimelineMobileText>
     <TimelineMobileLine></TimelineMobileLine>
@@ -197,7 +197,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
     ></TimelineMobileText>
     <TimelineMobileText
       date="9 novembre"
-      location="Truttikon, Zürich"
+      location="Truttikon, Zürich."
       age="Elle aurait eu 65 ans."
     ></TimelineMobileText>
     <TimelineMobileLine></TimelineMobileLine>

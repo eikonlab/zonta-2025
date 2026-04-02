@@ -96,6 +96,10 @@ onBeforeUnmount(() => ctx?.revert())
   z-index: 1;
 }
 
+em {
+  line-height: 23px;
+}
+
 /* Position image */
 img {
   max-width: 413px;

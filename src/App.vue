@@ -46,7 +46,7 @@ onMounted(() => {
         end: '+=300%',
         scrub: true,
         invalidateOnRefresh: true,
-        markers: false,
+        // markers: true,
       },
     })
   })

@@ -90,7 +90,7 @@ onMounted(async () => {
       start: 'top top',
       end: 'bottom top',
 
-      markers: true,
+      // markers: true,
 
       onEnter: () => updateBurger(section),
       onEnterBack: () => updateBurger(section),

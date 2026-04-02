@@ -77,8 +77,6 @@ defineEmits(['start'])
 
 #intro-start-layout-end-text {
   text-align: right;
-  background-color: var(--color-light-orange);
-  border-radius: 10px;
 }
 
 #intro-start-layout-end-text p {
