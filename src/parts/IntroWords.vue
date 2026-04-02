@@ -79,6 +79,9 @@ p {
 
   display: inline-block;
   padding: 30px;
+
+  background-color: var(--color-light-orange);
+  border-radius: 100px;
 }
 
 /* Mise en page centrée des mots */

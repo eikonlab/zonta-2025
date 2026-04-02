@@ -6,7 +6,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
 
 <template>
   <div id="timeline-mobile-wrapper">
-    <p id="year-text">Féminicides en 2025</p>
+    <p id="timeline-mobile-year-text">Féminicides en 2025</p>
     <TimelineMobileMonth month="Janvier"></TimelineMobileMonth>
     <TimelineMobileLine></TimelineMobileLine>
     <TimelineMobileLine></TimelineMobileLine>
@@ -208,7 +208,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
     <TimelineMobileLine></TimelineMobileLine>
     <TimelineMobileLine></TimelineMobileLine>
     <TimelineMobileMonth month="Décembre"></TimelineMobileMonth>
-    <p id="recap-text">27 féminicides connus en 2025</p>
+    <p id="timeline-mobile-recap-text">27 féminicides connus en 2025</p>
   </div>
 </template>
 
@@ -226,7 +226,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
 }
 
 /* Style texte année */
-#year-text {
+#timeline-mobile-year-text {
   font-size: 17px;
   font-style: normal;
   font-weight: 700;
@@ -238,7 +238,7 @@ import TimelineMobileMonth from './TimelineMobileMonth.vue'
 }
 
 /* Style texte final */
-#recap-text {
+#timeline-mobile-recap-text {
   font-size: 17px;
   font-style: normal;
   font-weight: 700;

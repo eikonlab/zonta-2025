@@ -9,7 +9,7 @@ import TimelineMonth from './TimelineMonth.vue'
 <template>
   <div>
     <div id="timeline-wrapper">
-      <p id="year-text">Féminicides en 2025</p>
+      <p id="timeline-year-text">Féminicides en 2025</p>
       <TimelineMonth month="Janvier"></TimelineMonth>
       <TimelineLine></TimelineLine>
       <TimelineLine></TimelineLine>
@@ -209,7 +209,7 @@ import TimelineMonth from './TimelineMonth.vue'
       <TimelineLine></TimelineLine>
       <TimelineLine></TimelineLine>
       <TimelineMonth month="Décembre"></TimelineMonth>
-      <p id="recap-text">27 féminicides connus en 2025</p>
+      <p id="timeline-recap-text">27 féminicides connus en 2025</p>
     </div>
   </div>
 </template>
@@ -230,7 +230,7 @@ import TimelineMonth from './TimelineMonth.vue'
 }
 
 /* Style texte année */
-#year-text {
+#timeline-year-text {
   font-size: 17px;
   font-style: normal;
   font-weight: 700;
@@ -242,7 +242,7 @@ import TimelineMonth from './TimelineMonth.vue'
 }
 
 /* Style texte final */
-#recap-text {
+#timeline-recap-text {
   font-size: 17px;
   font-style: normal;
   font-weight: 700;

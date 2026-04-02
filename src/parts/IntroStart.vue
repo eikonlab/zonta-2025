@@ -23,7 +23,7 @@ defineEmits(['start'])
         </div>
       </div>
 
-      <div id="button-start">
+      <div id="intro-start-button-start">
         <ButtonStart @start="$emit('start')"></ButtonStart>
       </div>
 
@@ -84,7 +84,7 @@ defineEmits(['start'])
 }
 
 /* Position du bouton */
-#button-start {
+#intro-start-button-start {
   height: 50%;
   display: flex;
   justify-content: center;
@@ -133,7 +133,7 @@ defineEmits(['start'])
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
-  #button-start {
+  #intro-start-button-start {
     height: 30%;
   }
 }

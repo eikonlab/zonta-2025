@@ -7,7 +7,7 @@ defineProps({
 <template>
   <div>
     <div id="timeline-month-wrapper">
-      <div id="layout-line">
+      <div id="timeline-month-layout-line">
         <p>{{ month }}</p>
         <div id="timeline-month-line"></div>
       </div>
@@ -30,7 +30,7 @@ p {
 }
 
 /* Mise en page ligne */
-#layout-line {
+#timeline-month-layout-line {
   display: flex;
   align-items: center;
   justify-content: end;

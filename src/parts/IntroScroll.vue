@@ -36,9 +36,9 @@ onMounted(() => {
 <template>
   <div id="scroller" ref="ScrollerRef">
     <div id="intro-scroll">
-      <div id="position-button-scroll">
-        <div id="button-parent">
-          <div id="button-div">
+      <div id="intro-scroll-position-button-scroll">
+        <div id="intro-scroll-button-parent">
+          <div id="intro-scroll-button-div">
             <ButtonScroll :scrollValue="scrollPosition"></ButtonScroll>
           </div>
         </div>
@@ -59,19 +59,19 @@ onMounted(() => {
   display: none;
 }
 
-#button-parent {
+#intro-scroll-button-parent {
   width: 100%;
   height: 100vh;
 }
 
-#button-div {
+#intro-scroll-button-div {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
 
-#position-button-scroll {
+#intro-scroll-position-button-scroll {
   width: 100%;
   height: 100vh;
   inset: 0;

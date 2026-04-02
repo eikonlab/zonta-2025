@@ -32,11 +32,11 @@ function updateStreams() {
 }
 
 const texts = [
-  { id: '#text-top', duration: 28, delay: 0 },
-  { id: '#text-middle-left', duration: 32, delay: 1 },
-  { id: '#text-middle-right', duration: 26, delay: 1 },
-  { id: '#text-bottom-left', duration: 34, delay: 0 },
-  { id: '#text-bottom-right', duration: 30, delay: 1 },
+  { id: '#stats-messages-text-top', duration: 28, delay: 0 },
+  { id: '#stats-messages-text-middle-left', duration: 32, delay: 1 },
+  { id: '#stats-messages-text-middle-right', duration: 26, delay: 1 },
+  { id: '#stats-messages-text-bottom-left', duration: 34, delay: 0 },
+  { id: '#stats-messages-text-bottom-right', duration: 30, delay: 1 },
 ]
 
 // // animation
@@ -92,7 +92,7 @@ function setFilter(category) {
 
 <template>
   <div class="screen">
-    <div id="layout-content-text">
+    <div id="stats-messages-layout-content-text">
       <div id="layout-title">
         <h2>Messages du sapin porte-paroles</h2>
       </div>
@@ -132,10 +132,10 @@ function setFilter(category) {
       </div>
       <div></div>
     </div>
-    <div id="tree-container">
+    <div id="stats-messages-tree-container">
       <svg
-        class="tree-overlay"
-        id="text-top"
+        class="stats-messages-tree-overlay"
+        id="stats-messages-text-top"
         width="405"
         height="249"
         viewBox="0 0 405 249"
@@ -153,7 +153,7 @@ function setFilter(category) {
         />
         <g class="text-mask">
           <text>
-            <textPath id="text-top" href="#curve-text-top" startOffset="0%">
+            <textPath id="stats-messages-text-top" href="#curve-text-top" startOffset="0%">
               {{ streams[0] }}
             </textPath>
           </text>
@@ -161,8 +161,8 @@ function setFilter(category) {
       </svg>
 
       <svg
-        class="tree-overlay"
-        id="text-middle-left"
+        class="stats-messages-tree-overlay"
+        id="stats-messages-text-middle-left"
         width="474"
         height="483"
         viewBox="0 0 474 483"
@@ -179,15 +179,19 @@ function setFilter(category) {
           stroke="none"
         />
         <text>
-          <textPath id="text-middle-left" href="#curve-text-middle-left" startOffset="0%">
+          <textPath
+            id="stats-messages-text-middle-left"
+            href="#curve-text-middle-left"
+            startOffset="0%"
+          >
             {{ streams[1] }}
           </textPath>
         </text>
       </svg>
 
       <svg
-        class="tree-overlay"
-        id="text-middle-right"
+        class="stats-messages-tree-overlay"
+        id="stats-messages-text-middle-right"
         width="493"
         height="180"
         viewBox="0 0 493 180"
@@ -204,15 +208,19 @@ function setFilter(category) {
           stroke="none"
         />
         <text>
-          <textPath id="text-middle-right" href="#curve-text-middle-right" startOffset="0%">
+          <textPath
+            id="stats-messages-text-middle-right"
+            href="#curve-text-middle-right"
+            startOffset="0%"
+          >
             {{ streams[2] }}
           </textPath>
         </text>
       </svg>
 
       <svg
-        class="tree-overlay"
-        id="text-bottom-left"
+        class="stats-messages-tree-overlay"
+        id="stats-messages-text-bottom-left"
         width="655"
         height="357"
         viewBox="0 0 655 357"
@@ -229,15 +237,19 @@ function setFilter(category) {
           stroke="none"
         />
         <text>
-          <textPath id="text-bottom-left" href="#curve-text-bottom-left" startOffset="0%">
+          <textPath
+            id="stats-messages-text-bottom-left"
+            href="#curve-text-bottom-left"
+            startOffset="0%"
+          >
             {{ streams[3] }}
           </textPath>
         </text>
       </svg>
 
       <svg
-        class="tree-overlay"
-        id="text-bottom-right"
+        class="stats-messages-tree-overlay"
+        id="stats-messages-text-bottom-right"
         width="581"
         height="256"
         viewBox="0 0 581 256"
@@ -254,14 +266,18 @@ function setFilter(category) {
           stroke="none"
         />
         <text>
-          <textPath id="text-bottom-right" href="#curve-text-bottom-right" startOffset="0%">
+          <textPath
+            id="stats-messages-text-bottom-right"
+            href="#curve-text-bottom-right"
+            startOffset="0%"
+          >
             {{ streams[4] }}
           </textPath>
         </text>
       </svg>
 
-      <img id="tree-background-desktop" src="/img-all-messages-desktop.png" alt="" />
-      <img id="tree-background-mobile" src="/img-all-messages-mobile.png" alt="" />
+      <img id="stats-messages-tree-background-desktop" src="/img-all-messages-desktop.png" alt="" />
+      <img id="stats-messages-tree-background-mobile" src="/img-all-messages-mobile.png" alt="" />
     </div>
   </div>
 </template>
@@ -330,7 +346,7 @@ button.active {
 }
 
 /* Mise en page titre et filtres */
-#layout-content-text {
+#stats-messages-layout-content-text {
   padding-top: 40px;
   height: 100%;
   display: flex;
@@ -349,24 +365,24 @@ h2 {
 }
 
 /* Courbes */
-#tree-container {
+#stats-messages-tree-container {
   position: relative;
   height: 100%;
   pointer-events: none;
   margin-left: -100px;
 }
 
-#tree-background-desktop {
+#stats-messages-tree-background-desktop {
   /* Pour image pleine: margin-top: -100px; */
   width: 780px;
   height: auto;
 }
 
-#tree-background-mobile {
+#stats-messages-tree-background-mobile {
   display: none;
 }
 
-.tree-overlay {
+.stats-messages-tree-overlay {
   position: absolute;
 }
 
@@ -379,47 +395,47 @@ text {
 }
 
 /* Position courbes */
-#text-top {
+#stats-messages-text-top {
   left: 180px;
 }
 
-#text-middle-left {
+#stats-messages-text-middle-left {
   top: 130px;
   left: -70px;
 }
 
-#text-middle-right {
+#stats-messages-text-middle-right {
   top: 260px;
   right: 0;
 }
 
-#text-bottom-left {
+#stats-messages-text-bottom-left {
   left: -280px;
   bottom: 10px;
 }
 
-#text-bottom-right {
+#stats-messages-text-bottom-right {
   right: -40px;
   bottom: 25px;
 }
 
 @media (max-width: 1400px) {
-  #text-middle-left {
+  #stats-messages-text-middle-left {
     top: 130px;
     left: -90px;
   }
 
-  #text-middle-right {
+  #stats-messages-text-middle-right {
     top: 260px;
     right: 50px;
   }
 
-  #text-bottom-left {
+  #stats-messages-text-bottom-left {
     left: -320px;
     bottom: 10px;
   }
 
-  #text-bottom-right {
+  #stats-messages-text-bottom-right {
     right: 50px;
     bottom: 30px;
   }
@@ -430,56 +446,56 @@ text {
     width: 255px;
   }
 
-  #text-top {
+  #stats-messages-text-top {
     left: 120px;
   }
 
-  #text-middle-left {
+  #stats-messages-text-middle-left {
     top: 130px;
     left: -120px;
   }
 
-  #text-middle-right {
+  #stats-messages-text-middle-right {
     top: 240px;
     right: 250px;
   }
 
-  #text-bottom-left {
+  #stats-messages-text-bottom-left {
     left: -340px;
     bottom: 30px;
   }
 
-  #text-bottom-right {
+  #stats-messages-text-bottom-right {
     right: 250px;
     bottom: 0;
   }
 }
 
 @media (max-width: 1100px) {
-  #tree-container {
+  #stats-messages-tree-container {
     margin-left: -150px;
   }
 
-  #text-top {
+  #stats-messages-text-top {
     left: 90px;
   }
 
-  #text-middle-left {
+  #stats-messages-text-middle-left {
     top: 130px;
     left: -130px;
   }
 
-  #text-middle-right {
+  #stats-messages-text-middle-right {
     top: 240px;
     right: 280px;
   }
 
-  #text-bottom-left {
+  #stats-messages-text-bottom-left {
     left: -330px;
     bottom: 30px;
   }
 
-  #text-bottom-right {
+  #stats-messages-text-bottom-right {
     right: 290px;
     bottom: 0;
   }
@@ -505,7 +521,7 @@ text {
     margin-bottom: 10px;
   }
 
-  #tree-container {
+  #stats-messages-tree-container {
     margin-left: 0;
   }
 
@@ -513,27 +529,27 @@ text {
     flex-direction: column;
   }
 
-  #text-top {
+  #stats-messages-text-top {
     left: 140px;
     top: -60px;
   }
 
-  #text-middle-left {
+  #stats-messages-text-middle-left {
     top: 100px;
     left: -40px;
   }
 
-  #text-middle-right {
+  #stats-messages-text-middle-right {
     top: 190px;
     right: -20px;
   }
 
-  #text-bottom-left {
+  #stats-messages-text-bottom-left {
     left: -40px;
     bottom: 90px;
   }
 
-  #text-bottom-right {
+  #stats-messages-text-bottom-right {
     overflow: hidden;
     display: none;
     opacity: 0;
@@ -554,32 +570,32 @@ text {
     z-index: 10;
   }
 
-  #tree-background-desktop {
+  #stats-messages-tree-background-desktop {
     display: none;
   }
 
-  #tree-background-mobile {
+  #stats-messages-tree-background-mobile {
     display: block;
     width: 100%;
     height: auto;
   }
 
-  #text-top {
+  #stats-messages-text-top {
     left: 150px;
     top: 30px;
   }
 
-  #text-middle-left {
+  #stats-messages-text-middle-left {
     top: 50px;
     left: -100px;
   }
 
-  #text-middle-right {
+  #stats-messages-text-middle-right {
     top: 230px;
     right: -67px;
   }
 
-  #text-bottom-left {
+  #stats-messages-text-bottom-left {
     left: -70px;
     bottom: -50px;
   }
@@ -590,22 +606,22 @@ text {
 }
 
 @media (max-width: 576px) {
-  #text-top {
+  #stats-messages-text-top {
     left: 50px;
     top: 30px;
   }
 
-  #text-middle-left {
+  #stats-messages-text-middle-left {
     top: 80px;
     left: -100px;
   }
 
-  #text-middle-right {
+  #stats-messages-text-middle-right {
     top: 220px;
     right: -60px;
   }
 
-  #text-bottom-left {
+  #stats-messages-text-bottom-left {
     overflow: hidden;
     display: none;
     opacity: 0;

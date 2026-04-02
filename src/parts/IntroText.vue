@@ -24,8 +24,8 @@ onMounted(() => {
     })
     tl.from(image, {
       opacity: 0,
-      x: 40,
-      duration: 0.6,
+      x: 70,
+      duration: 0.5,
       ease: 'power2.out',
     })
 
@@ -71,14 +71,15 @@ onBeforeUnmount(() => ctx?.revert())
         </div>
 
         <div
-          class="col-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 offset-0 offset-sm-6 offset-md-0 offset-lg-1 image-col"
+          class="col-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 offset-0 offset-sm-6 offset-md-0 offset-lg-1 intro-text-image-col"
         >
-          <div>
+          <div id="intro-text-img-container">
             <img
               id="intro-text-img"
               src="/img-installation.png"
               alt="Deux personnes regardant l'installation dans la gare de Fribourg."
             />
+            <img id="intro-text-visual" src="/bg-p3-v2-orange.svg" alt="" />
           </div>
         </div>
       </div>
@@ -87,13 +88,17 @@ onBeforeUnmount(() => ctx?.revert())
 </template>
 
 <style scoped>
-/* Position texte */
-#intro-text-texts-animation {
-  margin-top: 100px;
+.screen {
+  display: flex;
+  align-items: center;
 }
 
 .screen div {
   z-index: 1;
+}
+/* Position texte */
+#intro-text-texts-animation {
+  margin-top: 100px;
 }
 
 em {
@@ -101,17 +106,24 @@ em {
 }
 
 /* Position image */
-img {
+#intro-text-img {
   max-width: 413px;
   height: auto;
 }
 
-.screen {
-  display: flex;
-  align-items: center;
+#intro-text-img-container {
+  position: relative;
 }
 
-.image-col {
+#intro-text-visual {
+  position: absolute;
+  right: 0;
+  top: -390px;
+  width: 860px;
+  height: auto;
+}
+
+.intro-text-image-col {
   padding-right: 0;
   display: flex;
   justify-content: flex-end;
@@ -125,7 +137,7 @@ img {
 
 /* Responsive */
 @media (max-width: 992px) {
-  img {
+  #intro-text-img {
     height: auto;
     max-width: 100%;
   }

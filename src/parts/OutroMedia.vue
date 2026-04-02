@@ -8,8 +8,9 @@
           <img
             src="/img-side-installation.png"
             alt="25 novembre, journée internationale de lutte pour l'élimination de la violence à l'égard des femmes, suivi de la quinzaine d'activisme sur le même sujet."
-            target="_blank"
+            id="outro-media-img"
           />
+          <img src="/bg-outro-p2-light-blue.svg" alt="" id="outro-media-img-visual" />
         </div>
         <div class="col-10 col-lg-7 col-xl-6 offset-1 offset-lg-0 order-1 order-lg-2">
           <h2>La presse et la radio en parlent</h2>
@@ -102,8 +103,18 @@ img {
   max-width: 392px;
 }
 
+/* Image */
 #outro-media-layout-img {
   padding-left: 0;
+  position: relative;
+}
+
+#outro-media-img-visual {
+  position: absolute;
+  left: 0;
+  top: -400px;
+  width: auto;
+  height: 1000px;
 }
 
 @media (max-width: 992px) {

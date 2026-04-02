@@ -60,7 +60,7 @@ function startExperience() {
 
   pointer-events: none;
 
-  background-image: url('../../img-button-start.svg');
+  background-image: url('/img-button-start.svg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
