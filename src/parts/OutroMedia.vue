@@ -63,6 +63,10 @@
 </template>
 
 <style scoped>
+.screen div {
+  z-index: 1;
+}
+
 .screen {
   display: flex;
   align-items: center;

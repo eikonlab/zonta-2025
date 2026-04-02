@@ -125,7 +125,7 @@ onMounted(() => {
   function updateItems() {
     items.forEach((item) => {
       const rect = item.getBoundingClientRect()
-      const viewportCenter = window.innerHeight / 2
+      // const viewportCenter = window.innerHeight / 2
 
       const date = item.querySelector('.timeline-text-date')
       const location = item.querySelector('.timeline-text-location')

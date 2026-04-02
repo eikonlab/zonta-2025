@@ -100,6 +100,10 @@ import ButtonShare from './../components/ButtonShare.vue'
 </template>
 
 <style scoped>
+.screen div {
+  z-index: 1;
+}
+
 .screen {
   display: flex;
   align-items: flex-end;
