@@ -41,7 +41,7 @@ onMounted(() => {
       y: 40,
       duration: 0.6,
       ease: 'power2.out',
-      delay: 1,
+      delay: 0.6,
     })
   })
 })
@@ -56,7 +56,7 @@ onBeforeUnmount(() => ctx?.revert())
         <div
           class="col-12 col-sm-10 col-md-6 col-lg-5 offset-0 offset-sm-1 offset-md-0 offset-lg-1 offset-xl-2"
         >
-          <div id="texts-animation">
+          <div id="intro-text-texts-animation">
             <p id="intro-text-sentence-top">
               Le sapin porte-parole est une initiative de sensibilisation et de solidarité portée
               par l'association <em>Victime pas seule</em>, visant à soutenir les victimes de
@@ -88,7 +88,7 @@ onBeforeUnmount(() => ctx?.revert())
 
 <style scoped>
 /* Position texte */
-#texts-animation {
+#intro-text-texts-animation {
   margin-top: 100px;
 }
 
@@ -111,6 +111,12 @@ img {
   padding-right: 0;
   display: flex;
   justify-content: flex-end;
+}
+
+#intro-text-sentence-top,
+#intro-text-sentence-bottom {
+  background-color: var(--color-light-orange);
+  border-radius: 10px;
 }
 
 /* Responsive */
@@ -139,10 +145,4 @@ img {
     height: 100%;
   }
 }
-
-/* @media (max-width: 576px) {
-  .image-col {
-    padding-left: 0;
-  }
-} */
 </style>

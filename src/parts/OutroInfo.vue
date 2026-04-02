@@ -7,7 +7,7 @@ import ButtonShare from './../components/ButtonShare.vue'
     <div>
       <div class="row">
         <div class="col-10 col-lg-5 offset-1 offset-lg-1">
-          <p>
+          <p class="outro-info-prevention">
             Vous êtes <strong>victime</strong> ou avez été
             <strong>victime de violences</strong> physiques, psychiques ou sexuelles ou avez besoin
             d’aide ?
@@ -15,7 +15,7 @@ import ButtonShare from './../components/ButtonShare.vue'
               <strong>Voici la liste des contacts utiles.</strong>
             </a>
           </p>
-          <p>
+          <p class="outro-info-prevention">
             <strong>Vous souhaitez témoigner anonymement ?</strong> Vous pouvez transmettre votre
             témoignage
             <a href="https://www.victimepasseule.ch/formulaire" target="_blank"
@@ -42,7 +42,7 @@ import ButtonShare from './../components/ButtonShare.vue'
       </div>
       <div class="row">
         <div class="col-10 col-md-7 col-lg-4 offset-1 offset-md-1 offset-lg-2">
-          <p>
+          <p class="outro-info-prevention">
             Sur une idée de l'association
             <a href="https://www.victimepasseule.ch/" target="_blank">Victime pas seule</a>,
             réalisation
@@ -109,6 +109,11 @@ import ButtonShare from './../components/ButtonShare.vue'
   align-items: flex-end;
 }
 
+.outro-info-prevention {
+  background-color: var(--color-light-blue);
+  border-radius: 10px;
+}
+
 /* Liens */
 a {
   color: var(--color-blue);
@@ -130,6 +135,7 @@ a:hover {
   border: solid 1.4px var(--color-orange);
   border-radius: 29px;
   padding: 30px;
+  background-color: var(--color-light-blue);
 }
 
 #outro-info-layout-emergency {

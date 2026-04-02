@@ -86,6 +86,9 @@ a {
 p {
   transition: all 0.4s ease;
   margin-bottom: 30px;
+  background-color: var(--color-light-blue);
+  border-radius: 10px;
+  display: inline-block;
 }
 
 a:hover p {

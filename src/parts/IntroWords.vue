@@ -33,32 +33,32 @@ watch(
 
 <template>
   <div class="screen" id="intro-words">
-    <div id="layout-all-words">
+    <div id="intro-words-layout-all-words">
       <div class="row">
         <div class="col-10 col-lg-12 offset-2 offset-lg-0">
-          <div id="layout-courage">
-            <p id="word-courage">Courage</p>
+          <div id="intro-words-layout-courage">
+            <p id="intro-words-word-courage">Courage</p>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-11 offset-1">
-          <p id="word-espoir">Espoir</p>
+          <p id="intro-words-word-espoir">Espoir</p>
         </div>
       </div>
       <div class="row">
         <div class="col-7 offset-5">
-          <p id="word-soutien">Soutien</p>
+          <p id="intro-words-word-soutien">Soutien</p>
         </div>
       </div>
       <div class="row">
         <div class="col-5 offset-6 offset-sm-7">
-          <p id="word-respect">Respect</p>
+          <p id="intro-words-word-respect">Respect</p>
         </div>
       </div>
       <div class="row">
         <div class="col-10 offset-2">
-          <p id="word-solidarite">Solidarité</p>
+          <p id="intro-words-word-solidarite">Solidarité</p>
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@ p {
 }
 
 /* Mise en page centrée des mots */
-#layout-all-words {
+#intro-words-layout-all-words {
   width: 100%;
   height: 100%;
   display: flex;
@@ -93,57 +93,57 @@ p {
   z-index: 1;
 }
 
-#layout-all-words .row {
+#intro-words-layout-all-words .row {
   margin: 0;
 }
 
 /* Mise en page mot Courage */
-#layout-courage {
+#intro-words-layout-courage {
   display: flex;
   justify-content: flex-end;
 }
 
 /* Placement précis des mots */
-#word-courage {
+#intro-words-word-courage {
   margin-top: 70px;
 }
 
-#word-espoir {
+#intro-words-word-espoir {
   margin-top: -50px;
 }
 
-#word-soutien {
+#intro-words-word-soutien {
   margin-top: 20px;
 }
 
-#word-respect {
+#intro-words-word-respect {
   margin-top: 60px;
 }
 
-#word-solidarite {
+#intro-words-word-solidarite {
   margin-top: 30px;
 }
 
 /* Responsive */
 @media (max-width: 992px) {
-  #layout-courage {
+  #intro-words-layout-courage {
     display: flex;
     justify-content: flex-start;
   }
 
-  #word-espoir {
+  #intro-words-word-espoir {
     margin-top: 60px;
   }
 
-  #word-soutien {
+  #intro-words-word-soutien {
     margin-top: 70px;
   }
 
-  #word-respect {
+  #intro-words-word-respect {
     margin-top: 90px;
   }
 
-  #word-solidarite {
+  #intro-words-word-solidarite {
     margin-top: 20px;
   }
 }
@@ -154,19 +154,19 @@ p {
     padding: 24px;
   }
 
-  #word-espoir {
+  #intro-words-word-espoir {
     margin-top: 45px;
   }
 
-  #word-soutien {
+  #intro-words-word-soutien {
     margin-top: 55px;
   }
 
-  #word-respect {
+  #intro-words-word-respect {
     margin-top: 75px;
   }
 
-  #word-solidarite {
+  #intro-words-word-solidarite {
     margin-top: 10px;
   }
 }
