@@ -71,7 +71,7 @@ import ButtonShare from './../components/ButtonShare.vue'
                 Sauteur et Elise Mutrux
               </p>
             </div>
-            <img src="./../../img-credits.png" alt="" />
+            <img src="/img-credits.png" alt="" />
           </div>
         </div>
       </div>
@@ -81,22 +81,16 @@ import ButtonShare from './../components/ButtonShare.vue'
         >
           <div id="outro-info-logos">
             <a href="https://www.zonta.ch/fr/" target="_blank">
-              <img src="./../../public/logo-zonta-fribourg.png" alt="Zonta Fribourg - logo" />
+              <img src="/logo-zonta-fribourg.png" alt="Zonta Fribourg - logo" />
             </a>
             <a href="https://swiss-soroptimist.ch/fr/" target="_blank">
-              <img
-                src="./../../public/logo-soroptimist-fribourg.png"
-                alt="Soroptimist Fribourg - logo"
-              />
+              <img src="/logo-soroptimist-fribourg.png" alt="Soroptimist Fribourg - logo" />
             </a>
             <a href="https://www.eikon.ch/" target="_blank">
-              <img id="outro-info-eikon" src="./../../public/logo-eikon.png" alt="eikon - logo" />
+              <img id="outro-info-eikon" src="/logo-eikon.png" alt="eikon - logo" />
             </a>
             <a href="https://www.fr.ch/" target="_blank">
-              <img
-                src="./../../public/logo-etat-fribourg-staat-freiburg.png"
-                alt="Etat de Fribourg - logo"
-              />
+              <img src="/logo-etat-fribourg-staat-freiburg.png" alt="Etat de Fribourg - logo" />
             </a>
           </div>
         </div>

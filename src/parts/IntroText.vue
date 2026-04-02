@@ -76,7 +76,7 @@ onBeforeUnmount(() => ctx?.revert())
           <div>
             <img
               id="intro-text-img"
-              src="./../../img-installation.png"
+              src="/img-installation.png"
               alt="Deux personnes regardant l'installation dans la gare de Fribourg."
             />
           </div>

@@ -260,8 +260,8 @@ function setFilter(category) {
         </text>
       </svg>
 
-      <img id="tree-background-desktop" src="./../../img-all-messages-desktop.png" alt="" />
-      <img id="tree-background-mobile" src="./../../img-all-messages-mobile.png" alt="" />
+      <img id="tree-background-desktop" src="/img-all-messages-desktop.png" alt="" />
+      <img id="tree-background-mobile" src="/img-all-messages-mobile.png" alt="" />
     </div>
   </div>
 </template>

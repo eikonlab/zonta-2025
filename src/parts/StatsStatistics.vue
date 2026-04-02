@@ -57,15 +57,12 @@ onBeforeUnmount(() => ctx?.revert())
                 Tant de messages
                 <em
                   >d'amour
-                  <img
-                    src="./../../img-icon-words-heart.png"
-                    id="stats-statistics-icon-heart"
-                    alt=""
+                  <img src="/img-icon-words-heart.png" id="stats-statistics-icon-heart" alt=""
                 /></em>
                 et de
                 <em
                   >soutien
-                  <img src="./../../img-icon-words-hand.png" id="stats-statistics-icon-hand" alt=""
+                  <img src="/img-icon-words-hand.png" id="stats-statistics-icon-hand" alt=""
                 /></em>
                 partagés cette année
               </p>
