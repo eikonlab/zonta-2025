@@ -7,7 +7,7 @@ import StatsScrollBg from './../parts/StatsScrollBg.vue'
 </script>
 
 <template>
-  <div id="burger-recapitulatif" class="burger-blue timeline-parent-position">
+  <section id="burger-recapitulatif" class="burger-blue timeline-parent-position">
     <div class="container">
       <StatsStatistics></StatsStatistics>
     </div>
@@ -25,7 +25,7 @@ import StatsScrollBg from './../parts/StatsScrollBg.vue'
     </div>
 
     <StatsScrollBg></StatsScrollBg>
-  </div>
+  </section>
 </template>
 
 <style scoped></style>

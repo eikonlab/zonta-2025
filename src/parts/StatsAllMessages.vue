@@ -97,33 +97,38 @@ function setFilter(category) {
         <h2>Messages du sapin porte-parole</h2>
       </div>
       <div id="filters-layout">
-        <div id="filters">
+        <div id="filters" role="group" aria-label="Filtrer les messages par catégorie">
           <button
             :class="{ active: activeCategory === 'category-support' }"
+            :aria-pressed="activeCategory === 'category-support'"
             @click="setFilter('category-support')"
           >
             Soutien émotionnel
           </button>
           <button
             :class="{ active: activeCategory === 'category-action' }"
+            :aria-pressed="activeCategory === 'category-action'"
             @click="setFilter('category-action')"
           >
             Appel à l'action
           </button>
           <button
             :class="{ active: activeCategory === 'category-solidarity' }"
+            :aria-pressed="activeCategory === 'category-solidarity'"
             @click="setFilter('category-solidarity')"
           >
             Solidarité collective
           </button>
           <button
             :class="{ active: activeCategory === 'category-condemnation' }"
+            :aria-pressed="activeCategory === 'category-condemnation'"
             @click="setFilter('category-condemnation')"
           >
             Condamnation de la violence
           </button>
           <button
             :class="{ active: activeCategory === 'category-tributes' }"
+            :aria-pressed="activeCategory === 'category-tributes'"
             @click="setFilter('category-tributes')"
           >
             Hommages aux victimes

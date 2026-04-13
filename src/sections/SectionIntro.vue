@@ -118,7 +118,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="burger-accueil" class="burger-orange" ref="introDiv">
+  <section id="burger-accueil" class="burger-orange" ref="introDiv">
     <IntroMovingBg :state="state"></IntroMovingBg>
 
     <div class="container">
@@ -138,7 +138,7 @@ onMounted(() => {
         <IntroScroll @jumpToStats="HandleJumpToStats"></IntroScroll>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>

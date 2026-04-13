@@ -132,7 +132,7 @@ onBeforeUnmount(() => ctx?.revert())
       <div class="row">
         <div class="col-12">
           <div id="stats-highlighted-layout-title">
-            <h3>Message mis en avant</h3>
+            <h2>Message mis en avant</h2>
           </div>
           <div id="stats-highlighted-layout-message">
             <div id="stats-highlighted-quote-block">
@@ -158,7 +158,7 @@ onBeforeUnmount(() => ctx?.revert())
   align-items: center;
 }
 
-h3 {
+h2 {
   margin-bottom: 20px;
 }
 

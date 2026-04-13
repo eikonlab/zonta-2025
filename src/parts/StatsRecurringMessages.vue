@@ -70,7 +70,7 @@ onBeforeUnmount(() => ctx?.revert())
       <div class="row">
         <div class="col-12">
           <div id="stats-recurring-layout-title">
-            <h3>Messages les plus récurrents</h3>
+            <h2>Messages les plus récurrents</h2>
           </div>
         </div>
       </div>
@@ -223,7 +223,7 @@ onBeforeUnmount(() => ctx?.revert())
     justify-content: flex-end;
   }
 
-  h3 {
+  h2 {
     text-align: end;
   }
 }
@@ -251,7 +251,7 @@ onBeforeUnmount(() => ctx?.revert())
 }
 
 @media (max-width: 768px) {
-  h3 {
+  h2 {
     max-width: 200px;
   }
 
@@ -268,7 +268,7 @@ onBeforeUnmount(() => ctx?.revert())
 }
 
 @media (max-width: 576px) {
-  h3 {
+  h2 {
     max-width: 150px;
   }
 

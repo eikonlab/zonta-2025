@@ -1,11 +1,12 @@
 <script setup>
-import { onMounted, nextTick, inject, watch } from 'vue'
+import { onMounted, nextTick, inject, watch, ref } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const isIntroDone = inject('isIntroDone')
+const isMenuOpen = ref(false)
 
 watch(isIntroDone, (newVal) => {
   if (newVal) {
@@ -21,6 +22,7 @@ onMounted(() => {
 
   function toggleMenu() {
     menu.classList.toggle('is-active')
+    isMenuOpen.value = !isMenuOpen.value
   }
 
   burger.addEventListener('click', toggleMenu)
@@ -114,25 +116,31 @@ onMounted(async () => {
 
 <template>
   <div class="burger-menu">
-    <div class="burger">
+    <button
+      class="burger"
+      type="button"
+      :aria-expanded="isMenuOpen.toString()"
+      aria-label="Menu de navigation"
+      aria-controls="burger-nav-menu"
+    >
       <div class="circle alt-burger">
-        <div class="bar-icon">
+        <div class="bar-icon" aria-hidden="true">
           <div class="bar bar-top"></div>
           <div class="bar bar-middle"></div>
           <div class="bar bar-bottom"></div>
         </div>
       </div>
-    </div>
+    </button>
     <div class="burger-layout">
-      <div class="menu">
+      <nav class="menu" id="burger-nav-menu" aria-label="Navigation principale">
         <ul>
           <li><a href="#burger-accueil">Accueil</a></li>
           <li><a href="#burger-recapitulatif">Récapitulatif</a></li>
           <li><a href="#burger-retour-image">Retour en image</a></li>
           <li><a href="#burger-informations">Informations</a></li>
         </ul>
-        <div class="active-dot"></div>
-      </div>
+        <div class="active-dot" aria-hidden="true"></div>
+      </nav>
     </div>
   </div>
 </template>
@@ -228,6 +236,11 @@ ul {
 
 /* Bouton de l'icone du burger */
 .burger {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+
   position: absolute;
   z-index: 20;
   top: 10px;

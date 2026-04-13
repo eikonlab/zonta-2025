@@ -7,24 +7,24 @@ import OutroScrollBg from './../parts/OutroScrollBg.vue'
 
 <template>
   <div class="outro-container">
-    <div id="burger-retour-image" class="burger-orange">
+    <section id="burger-retour-image" class="burger-orange">
       <div class="container">
         <OutroAfterMovie></OutroAfterMovie>
       </div>
-    </div>
+    </section>
 
     <div id="OutroZone">
       <OutroScrollBg></OutroScrollBg>
     </div>
 
-    <div id="burger-informations" class="burger-blue">
+    <section id="burger-informations" class="burger-blue">
       <div class="container-fluid">
         <OutroMedia></OutroMedia>
       </div>
       <div class="container">
         <OutroInfo></OutroInfo>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

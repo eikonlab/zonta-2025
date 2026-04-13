@@ -4,8 +4,8 @@
   <div class="screen">
     <div class="outro-movie-line-container">
       <div class="outro-movie-video-container">
-        <h3>Retour en images</h3>
-        <video src="/zonta-aftermovie-web.mp4" controls></video>
+        <h2>Retour en images</h2>
+        <!-- <video src="/zonta-aftermovie-web.mp4" controls></video> -->
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
 }
 
 /* Font */
-h3 {
+h2 {
   color: var(--color-white);
   text-align: end;
   width: auto;
@@ -65,7 +65,7 @@ video {
     height: 100vh;
   }
 
-  h3 {
+  h2 {
     text-align: start;
     line-height: 25px;
   }
