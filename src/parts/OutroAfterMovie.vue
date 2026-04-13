@@ -62,7 +62,7 @@ video {
 /* Responsive */
 @media (max-width: 992px) {
   .screen {
-    height: 100vh;
+    height: 100svh;
   }
 
   h2 {

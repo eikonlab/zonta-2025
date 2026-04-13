@@ -23,7 +23,7 @@ body {
 
 /* Pages */
 .screen {
-  height: 100vh;
+  height: 100svh;
 }
 
 .burger-orange {

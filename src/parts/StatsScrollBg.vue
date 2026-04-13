@@ -98,7 +98,7 @@ onUnmounted(() => ctx.revert())
 .heroContainer {
   position: sticky;
   width: 100%;
-  height: 100vh;
+  height: 100svh;
   inset: 0;
 }
 

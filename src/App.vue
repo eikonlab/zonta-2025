@@ -311,7 +311,7 @@ onMounted(() => {
   right: 0;
 
   width: 230px;
-  height: 100vh;
+  height: 100svh;
 
   background-color: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(25px);
@@ -343,7 +343,7 @@ onMounted(() => {
 /* Frise desktop */
 #timeline-container-desktop {
   width: 230px;
-  height: 100vh;
+  height: 100svh;
   position: sticky;
   top: 0;
   z-index: 10;

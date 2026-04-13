@@ -224,7 +224,7 @@ em {
 
   /* #intro-text {
     padding-top: 50vh;
-    height: 100vh !important;
+    height: 100svh !important;
     padding-bottom: 30vh;
   } */
 

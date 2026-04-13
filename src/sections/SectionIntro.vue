@@ -135,7 +135,7 @@ onMounted(() => {
 
 <style scoped>
 #desktop-version {
-  height: 100vh;
+  height: 100svh;
   padding: 0;
   margin: 0;
   width: 100%;

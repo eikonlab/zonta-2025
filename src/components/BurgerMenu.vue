@@ -271,7 +271,7 @@ ul {
 .burger-layout {
   background-color: none;
   width: 230px;
-  height: 100vh;
+  height: 100svh;
   padding: 10px 18px;
 
   display: flex;

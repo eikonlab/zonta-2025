@@ -68,7 +68,7 @@ onUnmounted(() => ctx.value.revert())
   top: 0;
   bottom: 0;
   /* z-index: inherit; */
-  height: 100vh;
+  height: 100svh;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -121,7 +121,7 @@ onUnmounted(() => ctx.value.revert())
   .bg-img,
   .bg-img-2,
   .bg-img-3 {
-    height: 100vh;
+    height: 100svh;
     min-width: none;
   }
 }
