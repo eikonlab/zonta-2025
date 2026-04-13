@@ -312,6 +312,7 @@ onMounted(() => {
 
   width: 230px;
   height: 100svh;
+  height: 100dvh;
 
   background-color: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(25px);
@@ -344,6 +345,7 @@ onMounted(() => {
 #timeline-container-desktop {
   width: 230px;
   height: 100svh;
+  height: 100dvh;
   position: sticky;
   top: 0;
   z-index: 10;

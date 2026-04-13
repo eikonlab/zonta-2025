@@ -95,6 +95,7 @@ defineEmits(['start'])
 @media (max-width: 992px) {
   .screen {
     height: 100svh;
+    height: 100dvh;
   }
 
   #intro-start-layout-title {

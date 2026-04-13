@@ -61,6 +61,7 @@ onMounted(() => {
 <style scoped>
 #scroller {
   height: 100svh;
+  height: 100dvh;
   width: 100%;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -73,6 +74,7 @@ onMounted(() => {
 #intro-scroll-button-parent {
   width: 100%;
   height: 100svh;
+  height: 100dvh;
 }
 
 #intro-scroll-button-div {
@@ -85,6 +87,7 @@ onMounted(() => {
 #intro-scroll-position-button-scroll {
   width: 100%;
   height: 100svh;
+  height: 100dvh;
   inset: 0;
   position: sticky;
 }
