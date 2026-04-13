@@ -58,12 +58,13 @@ onMounted(async () => {
   function moveDot(index) {
     const link = links[index]
 
-    links.forEach((l) => l.classList.remove('active'))
-    link.classList.add('active')
-
+    // Read layout BEFORE DOM changes to avoid forced reflow
     const linkRect = link.getBoundingClientRect()
     const menuRect = link.closest('.menu').getBoundingClientRect()
     const top = linkRect.top - menuRect.top + linkRect.height / 2 - 2
+
+    links.forEach((l) => l.classList.remove('active'))
+    link.classList.add('active')
 
     gsap.to(dot, {
       duration: 0.5,

@@ -20,7 +20,7 @@ defineProps({
     </svg>
     <p>Scrollez pour Explorer</p>
     <div id="line">
-      <div id="line-highlight" :style="{ height: scrollValue + '%' }"></div>
+      <div id="line-highlight" :style="{ transform: `scaleY(${scrollValue / 100})` }"></div>
     </div>
   </div>
 </template>
@@ -45,12 +45,14 @@ p {
 
 #line-highlight {
   position: absolute;
-  opacity: 1;
   width: 1.4px;
+  height: 100%;
   top: 0;
-  height: 10%;
   z-index: 2;
   background-color: var(--color-white);
+  transform: scaleY(0);
+  transform-origin: top center;
+  will-change: transform;
 }
 
 /* Animation souris */

@@ -13,7 +13,6 @@ const handleScroll = () => {
     const scrollPercentage =
       (scroller.scrollTop / (scroller.scrollHeight - scroller.clientHeight)) * 100
     scrollPosition.value = scrollPercentage
-    console.log('Scroll position:', scrollPosition.value + '%')
     if (scrollPercentage >= 99 && !blockScroll.value) {
       emit('jumpToStats')
       blockScroll.value = true

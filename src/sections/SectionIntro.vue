@@ -24,8 +24,12 @@ const isMobile = window.innerWidth <= 576
 let state = ref(1)
 const introDiv = ref(null)
 const html = document.documentElement
-const isDev = ref(true)
+const isDev = ref(import.meta.env.DEV)
 const setIntroDone = inject('setIntroDone')
+
+function unlockScroll() {
+  html.classList.remove('intro-active')
+}
 
 function HandleJumpToStats() {
   document.getElementById('burger-recapitulatif').scrollIntoView({ behavior: 'smooth' })
@@ -33,17 +37,9 @@ function HandleJumpToStats() {
     setIntroDone(true)
   }, 500)
   setTimeout(() => {
-    // introDiv.value.style.display = 'none'
-    // window.scrollTo({
-    //   top: 0,
-    //   behavior: 'instant',
-    // })
-  }, 1000)
-  setTimeout(() => {
     ScrollTrigger.refresh()
-    html.style.overflowY = 'auto'
+    unlockScroll()
   }, 1500)
-  console.log('Jump to stats section')
 }
 
 function HandleStart() {
@@ -81,10 +77,11 @@ function HandleStart() {
 }
 
 onMounted(() => {
-  html.style.overflowY = 'hidden'
-
+  // En dev, on déverrouille immédiatement le scroll (la classe CSS intro-active est retirée)
+  // En prod, le scroll reste verrouillé jusqu'à la fin de l'intro (géré via CSS .intro-active)
+  // On n'écrit PLUS overflowY en JS au montage → évite le forced reflow
   if (isDev.value) {
-    html.style.overflowY = 'auto'
+    unlockScroll()
   }
 
   gsapContainers.value = document.querySelectorAll('.gsap-container')

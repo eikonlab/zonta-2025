@@ -73,8 +73,12 @@ onMounted(() => {
       const viewportCenterX = window.innerWidth / 2
       const activeRange = window.innerWidth * 0.15
 
-      mobileItems.forEach((item) => {
-        const rect = item.getBoundingClientRect()
+      // Batch all reads first to avoid forced reflows
+      const rects = mobileItems.map((item) => item.getBoundingClientRect())
+
+      // Then all writes
+      mobileItems.forEach((item, i) => {
+        const rect = rects[i]
         const itemCenterX = rect.left + rect.width / 2
         const isActive = Math.abs(itemCenterX - viewportCenterX) < activeRange
 
@@ -123,25 +127,27 @@ onMounted(() => {
   const items = gsap.utils.toArray('.timeline-text-item')
 
   function updateItems() {
-    items.forEach((item) => {
-      const rect = item.getBoundingClientRect()
-      // const viewportCenter = window.innerHeight / 2
+    // Batch all reads first to avoid forced reflows
+    const itemData = items.map((item) => ({
+      item,
+      rect: item.getBoundingClientRect(),
+      date: item.querySelector('.timeline-text-date'),
+      location: item.querySelector('.timeline-text-location'),
+      age: item.querySelector('.timeline-text-age'),
+      line: item.querySelector('.timeline-text-big-line'),
+      ageLine: item.querySelector('.timeline-text-age-line'),
+      ageWrapper: item.querySelector('.timeline-text-layout-line-age'),
+    }))
 
-      const date = item.querySelector('.timeline-text-date')
-      const location = item.querySelector('.timeline-text-location')
-      const age = item.querySelector('.timeline-text-age')
-      const line = item.querySelector('.timeline-text-big-line')
-      const ageLine = item.querySelector('.timeline-text-age-line')
-      const ageWrapper = item.querySelector('.timeline-text-layout-line-age')
+    const vhStart = window.innerHeight * 0.35
+    const vhEnd = window.innerHeight * 0.65
 
+    // Then all writes
+    itemData.forEach(({ item, rect, date, location, age, line, ageLine, ageWrapper }) => {
       if (!date || !location || !age || !line || !ageLine || !ageWrapper) return
 
       const itemCenter = rect.top + rect.height / 2
-
-      const start = window.innerHeight * 0.35
-      const end = window.innerHeight * 0.65
-
-      const isActive = itemCenter > start && itemCenter < end
+      const isActive = itemCenter > vhStart && itemCenter < vhEnd
 
       if (item._active === isActive) return
       item._active = isActive

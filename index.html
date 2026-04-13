@@ -1,10 +1,39 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="intro-active">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/tab-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://use.typekit.net/gnq8lfl.css" />
+    <!-- overflow-y géré via CSS + classe, évite l'écriture JS qui force un reflow au montage -->
+    <style>html.intro-active { overflow-y: hidden; }</style>
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+
+    <!-- Preload TypeKit JS pour réduire la chaîne de dépendances des polices -->
+    <link rel="preload" as="script" href="https://use.typekit.net/gnq8lfl.js" crossorigin />
+
+    <!-- Preload images critiques above-the-fold (fond de l'intro) -->
+    <!-- Sans ces preloads, les SVGs sont découverts tardivement : HTML → main.js → Vue → img -->
+    <link rel="preload" as="image" href="/bg-p1.svg" />
+    <link rel="preload" as="image" href="/bg-p2.svg" />
+    <link rel="preload" as="image" href="/bg-p3-v2.svg" />
+    <link rel="preload" as="image" href="/intro-mobile-bg.svg" media="(max-width: 576px)" />
+
+    <script>
+      // Adobe Fonts JS embed — supporte fontDisplay: 'swap' nativement
+      // Alternative: activer font-display: swap dans le dashboard Adobe Fonts (fonts.adobe.com → kit → Performance)
+      ;(function (d) {
+        var tk = d.createElement('script')
+        tk.src = 'https://use.typekit.net/gnq8lfl.js'
+        tk.async = true
+        tk.onload = function () {
+          try {
+            Typekit.load({ fontDisplay: 'swap' })
+          } catch (e) {}
+        }
+        d.head.appendChild(tk)
+      })(document)
+    </script>
     <meta name="description" content="Découvrez les 185 messages récoltés sur le sapin porte-paroles, une initiative de sensibilisation aux violences faites aux femmes portée par Victime pas seule et Zonta Club Fribourg." />
     <title>Sapin porte-paroles</title>
   </head>

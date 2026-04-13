@@ -6,11 +6,12 @@
       <div class="row">
         <div class="col-12 col-lg-4 order-2 order-lg-1" id="outro-media-layout-img">
           <img
-            src="/img-side-installation.png"
+            src="/img-side-installation.webp"
             alt="25 novembre, journée internationale de lutte pour l'élimination de la violence à l'égard des femmes, suivi de la quinzaine d'activisme sur le même sujet."
             id="outro-media-img"
+            loading="lazy"
           />
-          <img src="/bg-outro-p2-light-blue.svg" alt="" id="outro-media-img-visual" />
+          <img src="/bg-outro-p2-light-blue.svg" alt="" id="outro-media-img-visual" loading="lazy" />
         </div>
         <div class="col-10 col-lg-7 col-xl-6 offset-1 offset-lg-0 order-1 order-lg-2">
           <h2>La presse et la radio en parlent</h2>

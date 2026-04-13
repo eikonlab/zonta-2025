@@ -281,8 +281,8 @@ function setFilter(category) {
         </text>
       </svg>
 
-      <img id="stats-messages-tree-background-desktop" src="/img-all-messages-desktop.png" alt="" />
-      <img id="stats-messages-tree-background-mobile" src="/img-all-messages-mobile.png" alt="" />
+      <img id="stats-messages-tree-background-desktop" src="/img-all-messages-desktop.webp" alt="" loading="lazy" />
+      <img id="stats-messages-tree-background-mobile" src="/img-all-messages-mobile.webp" alt="" loading="lazy" />
     </div>
   </div>
 </template>
