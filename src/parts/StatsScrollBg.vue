@@ -109,12 +109,14 @@ img {
   pointer-events: none;
   top: 0;
   left: 0;
+  opacity: 0.5;
   /* transition: all 3s ease; */
 }
 
 @media (min-width: 600px) {
   img {
     scale: 500%;
+    opacity: 1;
   }
 }
 

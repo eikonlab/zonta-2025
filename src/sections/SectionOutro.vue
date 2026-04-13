@@ -37,4 +37,9 @@ import OutroScrollBg from './../parts/OutroScrollBg.vue'
 .outro-container {
   position: relative;
 }
+
+#burger-retour-image {
+  position: relative;
+  z-index: 1;
+}
 </style>

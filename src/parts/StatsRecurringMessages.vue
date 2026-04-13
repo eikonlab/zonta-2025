@@ -220,7 +220,7 @@ onBeforeUnmount(() => ctx?.revert())
   }
 
   #stats-recurring-layout-title {
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 
   h2 {

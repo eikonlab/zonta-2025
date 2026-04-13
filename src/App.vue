@@ -15,13 +15,13 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const isIntroDone = ref(false)
-const setIntroDDone = (val) => {
+const setIntroDone = (val) => {
   isIntroDone.value = val
 }
 provide('isIntroDone', isIntroDone)
-provide('setIntroDone', setIntroDDone)
+provide('setIntroDone', setIntroDone)
 
-onMounted(() => {
+const handleTimeline = () => {
   const mm = gsap.matchMedia()
 
   // Frise desktop
@@ -120,10 +120,8 @@ onMounted(() => {
       },
     })
   })
-})
 
-// Animation apparition texte desktop
-onMounted(() => {
+  // Animation apparition texte desktop
   const items = gsap.utils.toArray('.timeline-text-item')
 
   function updateItems() {
@@ -244,6 +242,10 @@ onMounted(() => {
   window.addEventListener('resize', () => {
     ScrollTrigger.refresh()
   })
+}
+
+onMounted(() => {
+  handleTimeline()
 })
 </script>
 

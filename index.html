@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/tab-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- overflow-y géré via CSS + classe, évite l'écriture JS qui force un reflow au montage -->
-    <style>html.intro-active { overflow-y: hidden; }</style>
-    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
-    <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+    <style>
+      html.intro-active {
+        overflow-y: hidden;
+      }
+    </style>
+    <link rel="preconnect" as="font" href="https://use.typekit.net" crossorigin />
+    <link rel="preconnect" as="font" href="https://p.typekit.net" crossorigin />
 
     <!-- Preload TypeKit JS pour réduire la chaîne de dépendances des polices -->
     <link rel="preload" as="script" href="https://use.typekit.net/gnq8lfl.js" crossorigin />
@@ -34,7 +37,10 @@
         d.head.appendChild(tk)
       })(document)
     </script>
-    <meta name="description" content="Découvrez les 185 messages récoltés sur le sapin porte-paroles, une initiative de sensibilisation aux violences faites aux femmes portée par Victime pas seule et Zonta Club Fribourg." />
+    <meta
+      name="description"
+      content="Découvrez les 185 messages récoltés sur le sapin porte-paroles, une initiative de sensibilisation aux violences faites aux femmes portée par Victime pas seule et Zonta Club Fribourg."
+    />
     <title>Sapin porte-paroles</title>
   </head>
   <body>

@@ -15,7 +15,6 @@ onMounted(() => {
   bgImgLast.value.onload = () => {
     const rect = bgImgLast.value.getBoundingClientRect()
     imageWidth = rect.width
-    console.log('imageWidth', imageWidth)
 
     if (!isMobile) {
       gsap.to(bgContainerRef.value, {

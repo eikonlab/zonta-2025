@@ -5,7 +5,7 @@ import IntroText from './../parts/IntroText.vue'
 import IntroScroll from './../parts/IntroScroll.vue'
 import IntroMovingBg from './../parts/IntroMovingBg.vue'
 
-import { onMounted, ref, inject } from 'vue'
+import { onMounted, ref, inject, watch } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -13,25 +13,24 @@ gsap.registerPlugin(ScrollTrigger)
 
 const gsapContainers = ref([])
 
-// timing values
-const skipWordsDelay = 3000
-const skipTextDelay = 15000
-const tutorialDelay = 2000
-
 const isMobile = window.innerWidth <= 576
 
 // reactive state
 let state = ref(1)
 const introDiv = ref(null)
 const html = document.documentElement
-const isDev = ref(import.meta.env.DEV)
 const setIntroDone = inject('setIntroDone')
+const isIntroDone = inject('isIntroDone')
 
 function unlockScroll() {
   html.classList.remove('intro-active')
 }
 
-function HandleJumpToStats() {
+function lockScroll() {
+  html.classList.add('intro-active')
+}
+
+function handleJumpToStats() {
   document.getElementById('burger-recapitulatif').scrollIntoView({ behavior: 'smooth' })
   setTimeout(() => {
     setIntroDone(true)
@@ -42,48 +41,37 @@ function HandleJumpToStats() {
   }, 1500)
 }
 
-function HandleStart() {
+function handleStart() {
   window.scrollTo({
     top: window.innerHeight,
     behavior: 'smooth',
   })
   state.value = 2
+}
 
-  setTimeout(() => {
-    window.scrollTo({
-      top: window.innerHeight * 2,
-      behavior: 'smooth',
-    })
+const goToSecondSection = () => {
+  window.scrollTo({
+    top: window.innerHeight * 2,
+    behavior: 'smooth',
+  })
 
-    state.value = 3
-  }, skipWordsDelay)
+  state.value = 3
+}
 
-  setTimeout(() => {
-    window.scrollTo({
-      top: window.innerHeight * 3,
-      behavior: 'smooth',
-    })
+const goToThirdSection = () => {
+  window.scrollTo({
+    top: window.innerHeight * 3,
+    behavior: 'smooth',
+  })
 
-    state.value = 4
+  state.value = 4
 
-    if (isMobile) {
-      setTimeout(() => {
-        HandleJumpToStats()
-      }, 2000)
-    }
-
-    setTimeout(() => {}, tutorialDelay)
-  }, skipTextDelay + skipWordsDelay)
+  if (isMobile) {
+    setTimeout(handleJumpToStats, 2000)
+  }
 }
 
 onMounted(() => {
-  // En dev, on déverrouille immédiatement le scroll (la classe CSS intro-active est retirée)
-  // En prod, le scroll reste verrouillé jusqu'à la fin de l'intro (géré via CSS .intro-active)
-  // On n'écrit PLUS overflowY en JS au montage → évite le forced reflow
-  if (isDev.value) {
-    unlockScroll()
-  }
-
   gsapContainers.value = document.querySelectorAll('.gsap-container')
 
   gsapContainers.value.forEach((container) => {
@@ -108,6 +96,13 @@ onMounted(() => {
     trigger: introDiv.value,
     start: 'top bottom',
     onEnterBack: () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+
+      setIntroDone(false)
+      lockScroll()
       state.value = 1
     },
   })
@@ -119,20 +114,20 @@ onMounted(() => {
     <IntroMovingBg :state="state"></IntroMovingBg>
 
     <div class="container">
-      <IntroStart @start="HandleStart"></IntroStart>
+      <IntroStart @start="handleStart"></IntroStart>
     </div>
 
     <div class="container">
-      <IntroWords :state="state"></IntroWords>
+      <IntroWords :state="state" @nextSection="goToSecondSection"></IntroWords>
     </div>
 
     <div class="container-fluid gsap-container">
-      <IntroText></IntroText>
+      <IntroText :state="state" @nextSection="goToThirdSection"></IntroText>
     </div>
 
     <div class="gsap-container">
       <div id="desktop-version">
-        <IntroScroll @jumpToStats="HandleJumpToStats"></IntroScroll>
+        <IntroScroll :state="state" @jumpToStats="handleJumpToStats"></IntroScroll>
       </div>
     </div>
   </section>

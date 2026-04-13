@@ -1,50 +1,61 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const props = defineProps({ state: Number })
 const section = ref(null)
 let ctx
+defineEmits(['nextSection'])
 
 onMounted(() => {
+  const sentenceTop = section.value.querySelector('#intro-text-sentence-top')
+  const sentenceBottom = section.value.querySelector('#intro-text-sentence-bottom')
+  const image = section.value.querySelector('#intro-text-img')
+
   ctx = gsap.context(() => {
-    const sentenceTop = section.value.querySelector('#intro-text-sentence-top')
-    const sentenceBottom = section.value.querySelector('#intro-text-sentence-bottom')
-    const image = section.value.querySelector('#intro-text-img')
+    const mm = gsap.matchMedia()
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section.value,
-        start: 'center 80%',
-        end: () => `+=${window.innerHeight * 0.6}`,
-        toggleActions: 'play reverse play reverse',
-      },
-    })
-    tl.from(image, {
-      opacity: 0,
-      x: 70,
-      duration: 0.5,
-      ease: 'power2.out',
+    // Desktop : ScrollTrigger classique
+    mm.add('(min-width: 577px)', () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section.value,
+          start: 'center 80%',
+          end: () => `+=${window.innerHeight * 0.6}`,
+          toggleActions: 'play reverse play reverse',
+        },
+      })
+      tl.from(image, { opacity: 0, x: 70, duration: 0.5, ease: 'power2.out' })
+      tl.from(sentenceTop, { opacity: 0, y: 40, duration: 0.6, ease: 'power2.out' })
+      tl.from(sentenceBottom, { opacity: 0, y: 40, duration: 0.6, ease: 'power2.out', delay: 0.6 })
     })
 
-    tl.from(sentenceTop, {
-      opacity: 0,
-      y: 40,
-      duration: 0.6,
-      ease: 'power2.out',
-    })
-
-    tl.from(sentenceBottom, {
-      opacity: 0,
-      y: 40,
-      duration: 0.6,
-      ease: 'power2.out',
-      delay: 0.6,
+    // Mobile : état initial invisible, déclenchement via state
+    mm.add('(max-width: 576px)', () => {
+      gsap.set(image, { opacity: 0, x: 70 })
+      gsap.set([sentenceTop, sentenceBottom], { opacity: 0, y: 40 })
     })
   })
 })
+
+watch(
+  () => props.state,
+  (val) => {
+    if (val === 3 && window.innerWidth <= 576 && section.value) {
+      const sentenceTop = section.value.querySelector('#intro-text-sentence-top')
+      const sentenceBottom = section.value.querySelector('#intro-text-sentence-bottom')
+      const image = section.value.querySelector('#intro-text-img')
+
+      const tl = gsap.timeline()
+      tl.to(image, { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out' })
+      tl.to(sentenceTop, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
+      tl.to(sentenceBottom, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 0.6 })
+    }
+  },
+)
 
 onBeforeUnmount(() => ctx?.revert())
 </script>
@@ -83,6 +94,18 @@ onBeforeUnmount(() => ctx?.revert())
         </div>
       </div>
     </div>
+    <button @click="$emit('nextSection')" id="next-section">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M4.29289 8.29289C4.68342 7.90237 5.31658 7.90237 5.70711 8.29289L12 14.5858L18.2929 8.29289C18.6834 7.90237 19.3166 7.90237 19.7071 8.29289C20.0976 8.68342 20.0976 9.31658 19.7071 9.70711L12.7071 16.7071C12.3166 17.0976 11.6834 17.0976 11.2929 16.7071L4.29289 9.70711C3.90237 9.31658 3.90237 8.68342 4.29289 8.29289Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </button>
   </div>
 </template>
 
@@ -90,14 +113,17 @@ onBeforeUnmount(() => ctx?.revert())
 .screen {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .screen div {
-  z-index: 1;
+  /* z-index: 1; */
 }
 /* Position texte */
 #intro-text-texts-animation {
   margin-top: 100px;
+  position: relative;
+  z-index: 1;
 }
 
 em {
@@ -134,11 +160,51 @@ em {
   border-radius: 10px;
 }
 
+#next-section {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  color: white;
+  border: none;
+  z-index: 10;
+}
+
+#next-section .icon {
+  border: 1px solid white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  animation: pulse 3s infinite;
+}
+
+#next-section .icon svg {
+  width: 24px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* Responsive */
 @media (max-width: 992px) {
   #intro-text-img {
     height: auto;
-    max-width: 100%;
+    max-width: 75%;
   }
 }
 
@@ -147,11 +213,20 @@ em {
     margin-top: 0;
   }
 
-  #intro-text {
-    padding-top: 50vh;
-    height: 200vh !important;
-    padding-bottom: 30vh;
+  #intro-text-visual {
+    display: none;
   }
+
+  #next-section {
+    left: 85%;
+    transform: translateX(0);
+  }
+
+  /* #intro-text {
+    padding-top: 50vh;
+    height: 100vh !important;
+    padding-bottom: 30vh;
+  } */
 
   #intro-text .row {
     display: flex;

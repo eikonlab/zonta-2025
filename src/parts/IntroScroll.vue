@@ -1,15 +1,27 @@
 <script setup>
 import ButtonScroll from './../components/ButtonScroll.vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
+const props = defineProps({ state: Number })
 const ScrollerRef = ref(null)
 const scrollPosition = ref(0)
 const emit = defineEmits(['jumpToStats'])
 const blockScroll = ref(false)
 
+watch(
+  () => props.state,
+  (newValue) => {
+    if (newValue === 1 && ScrollerRef.value) {
+      ScrollerRef.value.scrollTop = 0
+      scrollPosition.value = 0
+      blockScroll.value = false
+    }
+  },
+)
+
 const handleScroll = () => {
-  if (ScrollerRef.value) {
-    const scroller = ScrollerRef.value
+  const scroller = ScrollerRef.value
+  if (scroller) {
     const scrollPercentage =
       (scroller.scrollTop / (scroller.scrollHeight - scroller.clientHeight)) * 100
     scrollPosition.value = scrollPercentage

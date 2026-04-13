@@ -11,7 +11,12 @@
             id="outro-media-img"
             loading="lazy"
           />
-          <img src="/bg-outro-p2-light-blue.svg" alt="" id="outro-media-img-visual" loading="lazy" />
+          <img
+            src="/bg-outro-p2-light-blue.svg"
+            alt=""
+            id="outro-media-img-visual"
+            loading="lazy"
+          />
         </div>
         <div class="col-10 col-lg-7 col-xl-6 offset-1 offset-lg-0 order-1 order-lg-2">
           <h2>La presse et la radio en parlent</h2>
@@ -121,6 +126,7 @@ img {
 @media (max-width: 992px) {
   #outro-media-layout-img {
     padding: 12px 0;
+    z-index: -1;
   }
 
   img {
