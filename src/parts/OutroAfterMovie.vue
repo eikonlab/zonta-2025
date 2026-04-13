@@ -5,7 +5,7 @@
     <div class="outro-movie-line-container">
       <div class="outro-movie-video-container">
         <h2>Retour en images</h2>
-        <!-- <video src="/zonta-aftermovie-web.mp4" controls></video> -->
+        <video src="/zonta-aftermovie-web.mp4" controls></video>
       </div>
     </div>
   </div>

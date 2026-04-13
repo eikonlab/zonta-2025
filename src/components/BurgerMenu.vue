@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const isIntroDone = inject('isIntroDone')
+const setIntroDone = inject('setIntroDone')
 const isMenuOpen = ref(false)
 
 watch(isIntroDone, (newVal) => {
@@ -26,6 +27,13 @@ onMounted(() => {
   }
 
   burger.addEventListener('click', toggleMenu)
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      document.documentElement.classList.remove('intro-active')
+      setIntroDone(true)
+    })
+  })
 })
 
 // Animation du point en fonction de la section
