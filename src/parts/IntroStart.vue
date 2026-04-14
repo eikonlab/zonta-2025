@@ -31,8 +31,8 @@ defineEmits(['start'])
         <div class="col-12 intro-start-layout-end-text-col">
           <div id="intro-start-layout-end-text">
             <p>
-              Une initiative de l'association <em>Victime pas seule</em> relayée par le club service
-              <em>Zonta</em>
+              Une initiative de l'association <em>Victime pas seule</em> relayée par les clubs
+              service <em>Zonta</em> et <em>Soroptimist de Fribourg</em>
             </p>
           </div>
         </div>
