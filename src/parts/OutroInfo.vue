@@ -92,6 +92,9 @@ import ButtonShare from './../components/ButtonShare.vue'
             <a href="https://www.eikon.ch/" target="_blank">
               <img id="outro-info-eikon" src="/logo-eikon.png" alt="eikon - logo" loading="lazy" />
             </a>
+            <a href="https://www.ville-fribourg.ch/" target="_blank">
+              <img src="/logo-ville-fribourg.png" alt="Ville de Fribourg - logo" loading="lazy" />
+            </a>
             <a href="https://www.fr.ch/" target="_blank">
               <img
                 src="/logo-etat-fribourg-staat-freiburg.webp"
